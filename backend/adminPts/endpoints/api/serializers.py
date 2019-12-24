@@ -4,12 +4,27 @@ from endpoints.models import (rolPersona, tipoEvento, evento, persona, relacion,
 
 
 
-class tipoEventoSerializer(serializers.ModelSerializer):
+class tipoEventoResumenSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = tipoEvento
         fields = "__all__"
 
+
+class eventoResumenSerializer(serializers.ModelSerializer):
+    tipo = tipoEventoResumenSerializer()
+    
+    class Meta:
+        model = evento
+        fields = "__all__"
+
+
+class tipoEventoSerializer(serializers.ModelSerializer):
+    eventos = eventoResumenSerializer(many=True)
+
+    class Meta:
+        model = tipoEvento
+        fields = "__all__"
 
 
 
@@ -34,7 +49,8 @@ class personaResumenSerializer(serializers.ModelSerializer):
 
 
 class rolPersonaSerializer(serializers.ModelSerializer):
-    personas = personaResumenSerializer()
+    personas = personaResumenSerializer(many=True)
+    
     class Meta:
         model = rolPersona
         fields = "__all__"
@@ -66,12 +82,6 @@ class tipoEstructuraSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class eventoResumenSerializer(serializers.ModelSerializer):
-    tipo = tipoEventoSerializer()
-    
-    class Meta:
-        model = evento
-        fields = "__all__"
 
 
 class estructuraResumenSerializer(serializers.ModelSerializer):
@@ -97,28 +107,6 @@ class rolPersonaResumenSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class personaSerializer(serializers.ModelSerializer):
-    eventos = eventoResumenSerializer(many=True)
-    estructura = estructuraResumenSerializer()
-    rol = rolPersonaResumenSerializer()
-    aportes = aporteResumenSerializer(many=True)
-    relaciones_propias = personaResumenSerializer(many=True)
-    relacion_de = personaResumenSerializer(many=True)
-
-    class Meta:
-        model = persona
-        fields = "__all__"
-
-
-class eventoSerializer(serializers.ModelSerializer):
-    tipo = tipoEventoSerializer()
-    personas = personaSerializer(many=True)
-
-    class Meta:
-        model = evento
-        fields = "__all__"
-
-
 
 class relacionSerializer(serializers.ModelSerializer):
     persona_militante = personaResumenSerializer()
@@ -127,6 +115,30 @@ class relacionSerializer(serializers.ModelSerializer):
     class Meta:
         model = relacion
         fields = "__all__"
+
+
+class personaSerializer(serializers.ModelSerializer):
+    eventos = eventoResumenSerializer(many=True)
+    estructura = estructuraResumenSerializer()
+    rol = rolPersonaResumenSerializer()
+    aportes = aporteResumenSerializer(many=True)
+    relaciones_propias = relacionSerializer(many=True)
+    relacion_de = relacionSerializer(many=True)
+
+    class Meta:
+        model = persona
+        fields = "__all__"
+
+
+class eventoSerializer(serializers.ModelSerializer):
+    tipo = tipoEventoSerializer()
+    personas = personaResumenSerializer(many=True)
+
+    class Meta:
+        model = evento
+        fields = "__all__"
+
+
 
 
 class aporteResumenSerializer(serializers.ModelSerializer):
@@ -140,7 +152,7 @@ class tipoAporteSerializer(serializers.ModelSerializer):
     aportes = aporteResumenSerializer(many=True)
 
     class Meta:
-        model = aporte
+        model = tipoAporte
         fields = "__all__"
 
 

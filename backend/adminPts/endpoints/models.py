@@ -19,6 +19,7 @@ class tipoEvento(models.Model):
     nombre = models.CharField(max_length=50)
     creado = models.DateTimeField(auto_now_add=True)
     actualizado = models.DateTimeField(auto_now=True)
+    # Eventos
     def __str__(self):
         return self.nombre
 
