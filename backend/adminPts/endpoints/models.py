@@ -33,6 +33,7 @@ class evento(models.Model):
     tipo = models.ForeignKey(tipoEvento, on_delete=models.CASCADE, related_name="eventos")
     creado = models.DateTimeField(auto_now_add=True)
     actualizado = models.DateTimeField(auto_now=True)
+    #personas
     def __str__(self):
         return self.nombre
 
@@ -43,6 +44,7 @@ class evento(models.Model):
 
 class tipoEstructura(models.Model):
     nombre = models.CharField(max_length=50)
+    #Estructuras
     def __str__(self):
         return self.nombre
 
@@ -53,6 +55,7 @@ class tipoEstructura(models.Model):
 
 class zona(models.Model):
     nombre = models.CharField(max_length=50)
+    #Estructuras
     def __str__(self):
         return self.nombre
 
@@ -81,6 +84,7 @@ class persona(models.Model):
     creado = models.DateTimeField(auto_now_add=True)
     actualizado = models.DateTimeField(auto_now=True)
     estructura = models.ForeignKey(estructura, on_delete=models.CASCADE, related_name="personas", null=True)
+    eventos = models.ManyToManyField(evento, related_name="personas")
     # aportes
     # relaciones_propias
     # relacion_de
