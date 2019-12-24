@@ -1,2 +1,3 @@
 /venv
 /frontend/node_modules
+/backend/adminPts/db.sqlite3
