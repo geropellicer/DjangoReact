@@ -41,12 +41,46 @@ class evento(models.Model):
 
 
 
+class tipoEstructura(models.Model):
+    nombre = models.CharField(max_length=50)
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        verbose_name_plural = "tipos de estructura"
+
+
+
+class zona(models.Model):
+    nombre = models.CharField(max_length=50)
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        verbose_name_plural = "zonas"
+
+
+
+class estructura(models.Model):
+    nombre = models.CharField(max_length=50)
+    tipo = models.ForeignKey(tipoEstructura, on_delete=models.CASCADE, related_name="estructuras")
+    zona = models.ForeignKey(zona, on_delete=models.CASCADE, related_name="estructuras")
+    # personas
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        verbose_name_plural = "estructuras"
+
+
+
 class persona(models.Model):
     nombre = models.CharField(max_length=50)
     rol = models.ForeignKey(rolPersona, on_delete=models.CASCADE, related_name="personas")
     edad = models.PositiveSmallIntegerField(null=True)
     creado = models.DateTimeField(auto_now_add=True)
     actualizado = models.DateTimeField(auto_now=True)
+    estructura = models.ForeignKey(estructura, on_delete=models.CASCADE, related_name="personas", null=True)
     # aportes
     # relaciones_propias
     # relacion_de
