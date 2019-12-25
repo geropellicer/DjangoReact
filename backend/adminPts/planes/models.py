@@ -29,7 +29,7 @@ class personaPlan(models.Model):
 
 class plan(models.Model):
     nombre = models.CharField(max_length=50)
-    descripcion = models.CharField(max_length=100, null=True)
+    descripcion = models.CharField(max_length=100, null=True, blank=True)
     personas = models.ManyToManyField(personaPlan, related_name="planes")
     evento = models.ForeignKey(evento, on_delete=models.CASCADE, related_name="planes")
     def __str__(self):
