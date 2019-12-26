@@ -333,7 +333,11 @@ td:first-child {
 th:last-child,
 td:last-child {
   padding-right: 0; }
-
+table a{
+  text-transform: none;
+  text-decoration: none;
+  color: #222;
+}
 
 /* Spacing
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

@@ -1,10 +1,30 @@
-import React,{useEffect} from 'react';
-
-const Tabla = ({columnas, filas}) => {
+import React,{useEffect, useState} from 'react';
+import {Link} from 'react-router-dom';
+const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase}) => {
 
     useEffect(() => {
-        //console.log(typeof(columnas));
-    }, [])
+        prepararFilas();
+    }, [data])
+
+    const [filas, setFilas] = useState([]);
+
+    const prepararFilas = () => {
+        console.log(data.length);
+        for(let i=0; i < data.length; i++){
+            let nuevaFila = [];
+            for(let j=0; j < refColumnas.length; j++){
+                let valor = data[i][refColumnas[j]];
+                if(refPropsColumnas[j] !== '') {
+                    console.log("ocurrio una vez");
+                    valor = valor[refPropsColumnas[j]];
+                };
+                nuevaFila.push(valor);
+            }
+            setFilas(prevFilas => [...prevFilas, nuevaFila] );
+        }
+    };
+
+    
 
     return(
         <div className="u-full-width tableContainer">
@@ -23,17 +43,24 @@ const Tabla = ({columnas, filas}) => {
                 <tbody>
                     {
                         filas.map(
-                            (fila) => (
-                                <tr key={fila}>
+                            (fila) => {
+                                console.log(fila);
+                                return(
+                                    <tr key={fila}>
                                     {
                                         fila.map(
                                             (col) => (
-                                                <td key={col}> {col} </td>
+                                                <td key={col}>  
+                                                    <Link to={`${linkBase}/${fila[0]}`}>
+                                                        {col}
+                                                    </Link>
+                                                </td>
                                             )
                                         )
                                     }
                                 </tr>
-                            )
+                                )
+                            }
                         )
                     }
                 </tbody>

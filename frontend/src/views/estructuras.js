@@ -1,37 +1,36 @@
-import React,{useEffect} from 'react';
+import React,{useEffect, useState} from 'react';
 import Tabla from '../components/tabla';
-import BASEURL from '../assets/baseurl';
+import apiService from '../config/apiService';
 
 const Estructuras = () => {
     const ENDPOINT = 'estructuras';
 
-    const columnas = ['Nombre', 'Zona', 'Tipo', 'Cantidad de personas'];
+    const columnas = ['ID', 'Nombre', 'Zona', 'Tipo', 'Cantidad de personas'];
+    const refColumnas = ['id', 'nombre', 'zona', 'tipo', 'personas'];
+    const refPropsColumnas = ['', '', 'nombre', 'nombre', 'length'];
+    const linkBase = '/estructuras';
 
-    const filas = [
-        ['primera fila A', 'primera fila B', 'primera fila C', 'primera fila D'],
-        ['segunda fila A', 'segunda fila B', 'segunda fila C', 'segunda fila D'],
-        ['segunda fila A', 'tercera fila B', 'tercera fila C', 'tercera fila D'],
-        ['cuarta fila A', 'cuarta fila B', 'cuarta fila C', 'cuarta fila D'],
-        ['quinta fila A', 'quinta fila B', 'quinta fila C', 'primera fila D'],
-    ];
+    const [data, setData] = useState([]);
 
     useEffect(() => {
+        const getData = async () => {
+            const response = await apiService(ENDPOINT, 'GET');
+            setData(response);
+            console.log(response);
+        }
         getData();
     }, [])
-
-    const getData = async () => {
-        const response = await fetch(`${BASEURL}${ENDPOINT}`);
-        const data = await response.json();
-        //setRecipes(data.hits);
-        console.log(data);
-    }
 
     return(
         <div className="main container">
             <header className="sectionHeader">
                 <h3>Estructuras</h3>
             </header>
-            <Tabla columnas={columnas} filas={filas} />
+            <Tabla  columnas={columnas}
+                    data={data}
+                    refColumnas={refColumnas}
+                    refPropsColumnas={refPropsColumnas}
+                    linkBase={linkBase}/>
         </div>
     );
 };

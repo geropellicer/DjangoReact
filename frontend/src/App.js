@@ -8,6 +8,7 @@ import Footer from './components/footer';
 import Home from './views/home';
 import Estructuras from './views/estructuras';
 import Estructura from './views/estructura';
+import Login from './views/login';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <div className="appContent">
           <Switch>
             <Route path="/" component={Home} exact/>
+            <Route path="/login" component={Login} exact/>
             <Route path="/estructuras" component={Estructuras} exact/>
             <Route path="/estructuras/:id" component={Estructura} exact/>
           </Switch>

@@ -134,7 +134,7 @@ class estructuraViewSet(mixins.UpdateModelMixin,
                     GenericViewSet):
     queryset = estructura.objects.all()
     serializer_class = estructuraSerializer
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
     filter_backends = [SearchFilter]
     search_fields = ['estructura.nombre']
     

@@ -5,40 +5,54 @@ const Home = () => {
     return(
         <div className="doubleCenter">
             <ul className="homeMenu container">
-                <Link to='/estructuras'>
-                    <li className="card"> 
+                <Link className="card" to='/estructuras'>
+                    <li> 
                         <span><ion-icon name="home"></ion-icon></span>
                         Equipos/Estructuras
                     </li>
                 </Link>
-                <li className="card"> 
-                    <span><ion-icon name="home"></ion-icon></span>
-                    Equipos/Estructuras
-                </li>
-                <li className="card"> 
-                    <span><ion-icon name="home"></ion-icon></span>
-                    Equipos/Estructuras
-                </li>
-                <li className="card"> 
-                    <span><ion-icon name="home"></ion-icon></span>
-                    Equipos/Estructuras
-                </li>
-                <li className="card"> 
-                    <span><ion-icon name="home"></ion-icon></span>
-                    Equipos/Estructuras
-                </li>
-                <li className="card"> 
-                    <span><ion-icon name="home"></ion-icon></span>
-                    Equipos/Estructuras
-                </li>
-                <li className="card"> 
-                    <span><ion-icon name="home"></ion-icon></span>
-                    Equipos/Estructuras
-                </li>
-                <li className="card"> 
-                    <span><ion-icon name="home"></ion-icon></span>
-                    Equipos/Estructuras
-                </li>
+                <Link className="card" to='/estructuras'>
+                    <li> 
+                        <span><ion-icon name="home"></ion-icon></span>
+                        Equipos/Estructuras
+                    </li>
+                </Link>
+                <Link className="card" to='/estructuras'>
+                    <li> 
+                        <span><ion-icon name="home"></ion-icon></span>
+                        Equipos/Estructuras
+                    </li>
+                </Link>
+                <Link className="card" to='/estructuras'>
+                    <li> 
+                        <span><ion-icon name="home"></ion-icon></span>
+                        Equipos/Estructuras
+                    </li>
+                </Link>
+                <Link className="card" to='/estructuras'>
+                    <li> 
+                        <span><ion-icon name="home"></ion-icon></span>
+                        Equipos/Estructuras
+                    </li>
+                </Link>
+                <Link className="card" to='/estructuras'>
+                    <li> 
+                        <span><ion-icon name="home"></ion-icon></span>
+                        Equipos/Estructuras
+                    </li>
+                </Link>
+                <Link className="card" to='/estructuras'>
+                    <li> 
+                        <span><ion-icon name="home"></ion-icon></span>
+                        Equipos/Estructuras
+                    </li>
+                </Link>
+                <Link className="card" to='/estructuras'>
+                    <li> 
+                        <span><ion-icon name="home"></ion-icon></span>
+                        Equipos/Estructuras
+                    </li>
+                </Link>
             </ul>
         </div>
     );
