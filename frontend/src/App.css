@@ -1,38 +1,107 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+html, body, .App.container {
+  width: 100%;
+  max-width: 100%;
+  background: #ccc;
   min-height: 100vh;
+}
+
+header.mainHeader, footer.mainFooter{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  background: rgb(130, 0, 0);
+  height: 100px;
+  box-sizing: border-box;
+  color: #fff;
+  padding: 1em 2em;
+}
+
+header h1,
+header h2,
+header h3,
+header h4,
+header h5,
+header h6,
+footer h1,
+footer h2,
+footer h3,
+footer h4,
+footer h5,
+footer h6 {
+  margin: 0;
+}
+
+
+.appContent {
+  min-height: calc(100vh - 200px);
+  background: #ccc;
+}
+
+.card {
+  padding: 2em;
+  border-radius: 8px;
+  box-shadow: 1px 1px 10px 1px rgba(0,0,0,.3);
+  background: #fff;
+  transition: all .3s ease-in-out;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.card:hover {
+  transform: scale(1.1, 1.1);
+  box-shadow: 2px 2px 12px 2px rgba(0,0,0,.2);
+  transition: all .3s ease-in-out;
+}
+
+.homeMenu {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.homeMenu li{
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  font-size: 1em;
 }
 
-.App-link {
-  color: #61dafb;
+.homeMenu li span {
+  font-size: 5em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.homeMenu li:last-child{
+  margin-right: 0;
+}
+
+.doubleCenter {
+  width: 100%;
+  min-height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main.container{
+  padding-top: 2em;
+}
+
+.sectionHeader {
+  margin: 1em 0 1em 0;
+  background: #fff;
+  box-sizing: border-box;
+  padding: 1em;
+}
+
+.tableContainer{
+  padding: 2em;
+  background: #fff;
 }
