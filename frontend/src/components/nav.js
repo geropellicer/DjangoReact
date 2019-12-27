@@ -1,22 +1,16 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import TopMenu from './topMenu';
 
 const Nav = () => {
     return(
         <header className="mainHeader">
             <Link to="/">
-                <h2>Admin PTS</h2>
+                <h4>ADMIN PTS</h4>
             </Link>
 
             <nav>
-                <ul>
-                    <li>
-                        Un item
-                    </li>
-                    <li>
-                        Otro item
-                    </li>
-                </ul>
+               <TopMenu/>
             </nav>
         </header>
     );

@@ -1,22 +1,21 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const Footer = () => {
     return(
         <footer className="mainFooter">
-            <h2>Admin PTS</h2>
+            <h5>ADMIN PTS</h5>
 
             <nav>
-                <ul>
-                    <li>
-                        Un item
-                    </li>
-                    <li>
-                        Otro item
-                    </li>
-                </ul>
+                <Link to='/'>
+                    Volver a inicio
+                </Link>
+                <Link to='/logout'>
+                    Cerrar sesión
+                </Link>
             </nav>
 
-            <h3>Actualizado al 2020</h3>
+            <h6>Actualizado al 2020</h6>
         </footer>
     );
 };
