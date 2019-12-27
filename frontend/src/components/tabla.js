@@ -1,5 +1,6 @@
 import React,{useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
+
 const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase, alineacionesColumnas}) => {
 
     const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };

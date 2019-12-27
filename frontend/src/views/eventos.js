@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react';
 import Tabla from '../components/tabla';
 import apiService from '../config/apiService';
 
-const Estructuras = () => {
+const Eventos = () => {
     const ENDPOINT = 'eventos';
 
     const columnas = ['ID', 'Nombre', 'Tipo', 'Fecha', 'Padrón'];
@@ -36,4 +36,4 @@ const Estructuras = () => {
     );
 };
 
-export default Estructuras;
+export default Eventos;

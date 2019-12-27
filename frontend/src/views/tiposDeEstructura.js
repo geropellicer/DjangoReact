@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react';
 import Tabla from '../components/tabla';
 import apiService from '../config/apiService';
 
-const Estructuras = () => {
+const TiposDeEstructura = () => {
     const ENDPOINT = 'tipos-de-estructura';
 
     const columnas = ['ID', 'Nombre', 'Cantidad de estructuras  '];
@@ -36,4 +36,4 @@ const Estructuras = () => {
     );
 };
 
-export default Estructuras;
+export default TiposDeEstructura;

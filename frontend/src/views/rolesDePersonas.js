@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react';
 import Tabla from '../components/tabla';
 import apiService from '../config/apiService';
 
-const Estructuras = () => {
+const RolesDePersonas = () => {
     const ENDPOINT = 'roles-de-personas';
 
     const columnas = ['ID', 'Nombre', 'Descripción', 'Cantidad de personas'];
@@ -36,4 +36,4 @@ const Estructuras = () => {
     );
 };
 
-export default Estructuras;
+export default RolesDePersonas;
