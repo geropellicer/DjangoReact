@@ -10,10 +10,11 @@ import Estructuras from './views/estructuras';
 import Estructura from './views/estructura';
 import Login from './views/login';
 import Zonas from './views/zonas';
-import rolesDePersonas from './views/rolesDePersonas';
-import tiposDeEvento from './views/tiposDeEvento';
+import RolesDePersonas from './views/rolesDePersonas';
+import TiposDeEvento from './views/tiposDeEvento';
 import Eventos from './views/eventos';
-import tiposDeEstructura from './views/tiposDeEstructura';
+import TiposDeEstructura from './views/tiposDeEstructura';
+import Personas from './views/personas';
 
 function App() {
   return (
@@ -28,14 +29,16 @@ function App() {
             <Route path="/zonas/:id" component={Zonas} exact/>
             <Route path="/eventos" component={Eventos} exact/>
             <Route path="/eventos/:id" component={Eventos} exact/>
+            <Route path="/personas" component={Personas} exact/>
+            <Route path="/personas/:id" component={Personas} exact/>
             <Route path="/estructuras" component={Estructuras} exact/>
             <Route path="/estructuras/:id" component={Estructura} exact/>
-            <Route path="/tipos-de-evento" component={tiposDeEvento} exact/>
-            <Route path="/tipos-de-evento/:id" component={tiposDeEvento} exact/>
-            <Route path="/roles-de-personas" component={rolesDePersonas} exact/>
-            <Route path="/roles-de-personas/:id" component={rolesDePersonas} exact/>
-            <Route path="/tipos-de-estructura" component={tiposDeEstructura} exact/>
-            <Route path="/tipos-de-estructura/:id" component={tiposDeEstructura} exact/>
+            <Route path="/tipos-de-evento" component={TiposDeEvento} exact/>
+            <Route path="/tipos-de-evento/:id" component={TiposDeEvento} exact/>
+            <Route path="/roles-de-personas" component={RolesDePersonas} exact/>
+            <Route path="/roles-de-personas/:id" component={RolesDePersonas} exact/>
+            <Route path="/tipos-de-estructura" component={TiposDeEstructura} exact/>
+            <Route path="/tipos-de-estructura/:id" component={TiposDeEstructura} exact/>
           </Switch>
         </div>
         <Footer/>
