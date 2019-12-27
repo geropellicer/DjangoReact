@@ -146,3 +146,11 @@ table tbody tr:hover{
 table tbody tr td:first-child{
   padding: 0 1em;
 }
+
+table .textCenter {
+  text-align: center;
+}
+
+table .textLeft{
+  text-align: left;
+}
