@@ -13,6 +13,7 @@ import Zonas from './views/zonas';
 import rolesDePersonas from './views/rolesDePersonas';
 import tiposDeEvento from './views/tiposDeEvento';
 import Eventos from './views/eventos';
+import tiposDeEstructura from './views/tiposDeEstructura';
 
 function App() {
   return (
@@ -33,6 +34,8 @@ function App() {
             <Route path="/tipos-de-evento/:id" component={tiposDeEvento} exact/>
             <Route path="/roles-de-personas" component={rolesDePersonas} exact/>
             <Route path="/roles-de-personas/:id" component={rolesDePersonas} exact/>
+            <Route path="/tipos-de-estructura" component={tiposDeEstructura} exact/>
+            <Route path="/tipos-de-estructura/:id" component={tiposDeEstructura} exact/>
           </Switch>
         </div>
         <Footer/>
