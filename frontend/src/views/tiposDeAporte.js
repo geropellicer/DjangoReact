@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react';
 import Tabla from '../components/tabla';
 import apiService from '../config/apiService';
 
-const TiposDeEvento = () => {
+const TiposDeAporte = () => {
     const ENDPOINT = 'tipos-de-aporte';
 
     const columnas = ['ID', 'Nombre', 'Cantidad de aportes'];
@@ -36,4 +36,4 @@ const TiposDeEvento = () => {
     );
 };
 
-export default TiposDeEvento;
+export default TiposDeAporte;
