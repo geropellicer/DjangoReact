@@ -143,7 +143,8 @@ table tbody tr:hover{
 }
 
 
-table tbody tr td:first-child{
+table tbody tr td:first-child,
+table thead th:first-child{
   padding: 0 1em;
 }
 
