@@ -140,6 +140,7 @@ footer h6 {
   box-sizing: border-box;
   padding: 1em;
   color: #fff;
+  padding-left: 2em;
 }
 
 .tableContainer{
@@ -251,4 +252,36 @@ table .textLeft{
   @keyframes pop-in {
   0% { opacity: 0; transform: scale(0.5); }
   100% { opacity: 1; transform: scale(1); }
+  }
+
+  header.secondary{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    background: #fff;
+    padding: 1em;color: #333;
+    align-items: center;
+    padding-left: 2em;
+  }
+
+header.secondary span{
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+  header.secondary div{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: baseline;
+    margin-right: 5em;
+  }
+
+  header.secondary div h5{
+    margin-right: 20px;
+  }
+
+  header.tableHeader{
+    margin-top: 2em;
+    margin-bottom: .5em;
   }
