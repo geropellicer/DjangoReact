@@ -12,6 +12,7 @@ import Login from './views/login';
 import Zonas from './views/zonas';
 import rolesDePersonas from './views/rolesDePersonas';
 import tiposDeEvento from './views/tiposDeEvento';
+import Eventos from './views/eventos';
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
             <Route path="/login" component={Login} exact/>
             <Route path="/zonas" component={Zonas} exact/>
             <Route path="/zonas/:id" component={Zonas} exact/>
+            <Route path="/eventos" component={Eventos} exact/>
+            <Route path="/eventos/:id" component={Eventos} exact/>
             <Route path="/estructuras" component={Estructuras} exact/>
             <Route path="/estructuras/:id" component={Estructura} exact/>
             <Route path="/tipos-de-evento" component={tiposDeEvento} exact/>
