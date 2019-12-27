@@ -10,7 +10,7 @@ import Estructuras from './views/estructuras';
 import Estructura from './views/estructura';
 import Login from './views/login';
 import Zonas from './views/zonas';
-
+import rolesDePersonas from './views/rolesDePersonas';
 
 function App() {
   return (
@@ -22,8 +22,11 @@ function App() {
             <Route path="/" component={Home} exact/>
             <Route path="/login" component={Login} exact/>
             <Route path="/zonas" component={Zonas} exact/>
+            <Route path="/zonas:id" component={Zonas} exact/>
             <Route path="/estructuras" component={Estructuras} exact/>
             <Route path="/estructuras/:id" component={Estructura} exact/>
+            <Route path="/roles-de-personas" component={rolesDePersonas} exact/>
+            <Route path="/roles-de-personas/:id" component={rolesDePersonas} exact/>
           </Switch>
         </div>
         <Footer/>
