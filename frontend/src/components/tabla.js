@@ -2,6 +2,8 @@ import React,{useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase, alineacionesColumnas}) => {
 
+    const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
     useEffect(() => {
         prepararFilas();
     }, [data])
@@ -12,7 +14,12 @@ const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase, alineac
         for(let i=0; i < data.length; i++){
             let nuevaFila = [];
             for(let j=0; j < refColumnas.length; j++){
-                let valor = {'key': j, 'valor': data[i][refColumnas[j]]};
+                let valor = {};
+                if(columnas[j] !== 'Fecha'){
+                    valor = {'key': j, 'valor': data[i][refColumnas[j]]};
+                } else {
+                    valor = {'key': j, 'valor': new Date(data[i][refColumnas[j]])};
+                }
                 if(refPropsColumnas[j] !== '') {
                     valor['valor'] = valor['valor'][refPropsColumnas[j]];
                 };
@@ -49,7 +56,7 @@ const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase, alineac
                                             (col, j) => (
                                                 <td className={alineacionesColumnas[j] === 'c' ? 'textCenter' : 'textLeft'} key={col['key']}>  
                                                     <Link to={`${linkBase}/${fila[0]['valor']}`}>
-                                                        {col['valor']}
+                                                        { columnas[j] !== 'Fecha' ? col['valor'] : col['valor'].toLocaleDateString('es-AR', dateOptions)}
                                                     </Link>
                                                 </td>
                                             )
