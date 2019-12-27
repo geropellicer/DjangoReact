@@ -48,12 +48,6 @@ class personaResumenSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class rolPersonaSerializer(serializers.ModelSerializer):
-    personas = personaResumenSerializer(many=True)
-    
-    class Meta:
-        model = rolPersona
-        fields = "__all__"
 
 
 class estructuraSerializer(serializers.ModelSerializer):
@@ -92,9 +86,15 @@ class estructuraResumenSerializer(serializers.ModelSerializer):
         model = estructura
         fields = "__all__"
 
+class personaResumenConEstructuraSerializer(serializers.ModelSerializer):
+    estructura = estructuraResumenSerializer()
+
+    class Meta:
+        model = persona
+        fields = "__all__"
 
 class aporteResumenSerializer(serializers.ModelSerializer):
-
+    
     class Meta:
         model = aporte
         fields = "__all__"
@@ -132,16 +132,23 @@ class personaSerializer(serializers.ModelSerializer):
 
 class eventoSerializer(serializers.ModelSerializer):
     tipo = tipoEventoSerializer()
-    personas = personaResumenSerializer(many=True)
+    personas = personaResumenConEstructuraSerializer(many=True)
 
     class Meta:
         model = evento
         fields = "__all__"
 
 
+class mesSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = mes
+        fields = "__all__"
 
 
 class aporteResumenSerializer(serializers.ModelSerializer):
+    persona = personaResumenSerializer()
+    mes = mesSerializer()
 
     class Meta:
         model = aporte
@@ -156,11 +163,6 @@ class tipoAporteSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class mesSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = mes
-        fields = "__all__"
 
 
 class aporteSerializer(serializers.ModelSerializer):
@@ -172,3 +174,10 @@ class aporteSerializer(serializers.ModelSerializer):
         model = aporte
         fields = "__all__"
 
+
+class rolPersonaSerializer(serializers.ModelSerializer):
+    personas = personaResumenConEstructuraSerializer(many=True)
+    
+    class Meta:
+        model = rolPersona
+        fields = "__all__"
