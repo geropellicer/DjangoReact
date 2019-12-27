@@ -9,6 +9,10 @@ const TopMenu = () => {
         setDisplay(!display);
     }
 
+    const click = () => {
+        setDisplay(false);
+    };
+
     return(
 
         <div className="topMenu">
@@ -18,53 +22,53 @@ const TopMenu = () => {
             <div className={display ? 'topMenuList card display' : 'topMenuList card'}>
                 <ul>
                     <li>
-                        <Link to='/'>
-                            Inicio
+                        <Link onClick={click} to='/'>
+                            <ion-icon name="home"></ion-icon> Inicio
                         </Link>
                     </li>
                     <li>
-                        <Link to='/estructuras'>
-                            Estructuras
+                        <Link onClick={click} to='/estructuras'>
+                            <ion-icon name="home"></ion-icon> Estructuras
                         </Link>
                     </li>
                     <li>
-                        <Link to='/personas'>
-                            Personas
+                        <Link onClick={click} to='/personas'>
+                        <ion-icon name="map"></ion-icon> Personas
                         </Link>
                     </li>
                     <li>
-                        <Link to='/zonas'>
-                            Zonas
+                        <Link onClick={click} to='/zonas'>
+                            <ion-icon name="map"></ion-icon> Zonas
                         </Link>
                     </li>
                     <li>
-                        <Link to='/eventos'>
-                            Eventos
+                        <Link onClick={click} to='/eventos'>
+                        <ion-icon name="calendar"></ion-icon> Eventos
                         </Link>
                     </li>
                     <li>
-                        <Link to='/aportes'>
-                            Aportes
+                        <Link onClick={click} to='/aportes'>
+                            <ion-icon name="cash"></ion-icon> Aportes
                         </Link>
                     </li>
                     <li>
-                        <Link to='/tipos-de-estructura'>
-                            Tipos de estructura
+                        <Link onClick={click} to='/tipos-de-estructura'>
+                            <ion-icon name="build"></ion-icon> Tipos de estructura
                         </Link>
                     </li>
                     <li>
-                        <Link to='/tipos-de-evento'>
-                            Tipos de evento
+                        <Link onClick={click} to='/tipos-de-evento'>
+                            <ion-icon name="build"></ion-icon> Tipos de evento
                         </Link>
                     </li>
                     <li>
-                        <Link to='/tipos-de-aporte'>
-                            Tipos de aporte
+                        <Link onClick={click} to='/tipos-de-aporte'>
+                            <ion-icon name="build"></ion-icon> Tipos de aporte
                         </Link>
                     </li>
                     <li>
-                        <Link to='/roles-de-personas'>
-                            Roles de personas
+                        <Link onClick={click} to='/roles-de-personas'>
+                            <ion-icon name="build"></ion-icon> Roles de personas
                         </Link>
                     </li>
                 </ul>
