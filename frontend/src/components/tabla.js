@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
-const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase}) => {
+const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase, alineacionesColumnas}) => {
 
     useEffect(() => {
         prepararFilas();
@@ -9,16 +9,14 @@ const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase}) => {
     const [filas, setFilas] = useState([]);
 
     const prepararFilas = () => {
-        console.log(data.length);
         for(let i=0; i < data.length; i++){
             let nuevaFila = [];
             for(let j=0; j < refColumnas.length; j++){
-                let valor = data[i][refColumnas[j]];
+                let valor = {'key': j, 'valor': data[i][refColumnas[j]]};
                 if(refPropsColumnas[j] !== '') {
-                    console.log("ocurrio una vez");
-                    valor = valor[refPropsColumnas[j]];
+                    valor['valor'] = valor['valor'][refPropsColumnas[j]];
                 };
-                nuevaFila.push(valor);
+                nuevaFila.push(valor);          
             }
             setFilas(prevFilas => [...prevFilas, nuevaFila] );
         }
@@ -33,8 +31,8 @@ const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase}) => {
                     <tr>
                     {
                         columnas.map(
-                            (element) => (
-                                <th key={element}>{element}</th>
+                            (element, i) => (
+                                <th className={alineacionesColumnas[i] === 'c' ? 'textCenter' : 'textLeft'} key={element}>{element}</th>
                             )
                         )
                     }
@@ -43,16 +41,15 @@ const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase}) => {
                 <tbody>
                     {
                         filas.map(
-                            (fila) => {
-                                console.log(fila);
+                            (fila, i) => {
                                 return(
-                                    <tr key={fila}>
+                                    <tr key={i}>
                                     {
                                         fila.map(
-                                            (col) => (
-                                                <td key={col}>  
+                                            (col, j) => (
+                                                <td className={alineacionesColumnas[j] === 'c' ? 'textCenter' : 'textLeft'} key={col['key']}>  
                                                     <Link to={`${linkBase}/${fila[0]}`}>
-                                                        {col}
+                                                        {col['valor']}
                                                     </Link>
                                                 </td>
                                             )
