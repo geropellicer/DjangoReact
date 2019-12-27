@@ -1,9 +1,8 @@
 import React,{useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
+import DATEOPTIONS from '../config/dateOptions';
 
 const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase, alineacionesColumnas}) => {
-
-    const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
     useEffect(() => {
         prepararFilas();
@@ -57,7 +56,7 @@ const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase, alineac
                                             (col, j) => (
                                                 <td className={alineacionesColumnas[j] === 'c' ? 'textCenter' : 'textLeft'} key={col['key']}>  
                                                     <Link to={`${linkBase}/${fila[0]['valor']}`}>
-                                                        { columnas[j] !== 'Fecha' ? col['valor'] : col['valor'].toLocaleDateString('es-AR', dateOptions)}
+                                                        { columnas[j] !== 'Fecha' ? col['valor'] : col['valor'].toLocaleDateString('es-AR', DATEOPTIONS)}
                                                     </Link>
                                                 </td>
                                             )
