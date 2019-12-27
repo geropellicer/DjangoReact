@@ -48,7 +48,7 @@ const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase, alineac
                                         fila.map(
                                             (col, j) => (
                                                 <td className={alineacionesColumnas[j] === 'c' ? 'textCenter' : 'textLeft'} key={col['key']}>  
-                                                    <Link to={`${linkBase}/${fila[0]}`}>
+                                                    <Link to={`${linkBase}/${fila[0]['valor']}`}>
                                                         {col['valor']}
                                                     </Link>
                                                 </td>
