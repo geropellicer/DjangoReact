@@ -16,7 +16,6 @@ const apiService = (endpoint, method, data) => {
       'Authorization': 'Token ' + window.localStorage.getItem("authToken"),
     }
   };
-  console.log(config.headers.Authorization);
   return fetch(`${BASEURL}${endpoint}`, config)
         .then(handleResponse)
         .catch(error => {console.log(error); return error})

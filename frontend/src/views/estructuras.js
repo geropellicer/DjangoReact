@@ -9,6 +9,7 @@ const Estructuras = () => {
     const refColumnas = ['id', 'nombre', 'zona', 'tipo', 'personas'];
     const refPropsColumnas = ['', '', 'nombre', 'nombre', 'length'];
     const linkBase = '/estructuras';
+    const alineacionesColumnas = ['c', 'l', 'c', 'c', 'c'];
 
     const [data, setData] = useState([]);
 
@@ -16,7 +17,6 @@ const Estructuras = () => {
         const getData = async () => {
             const response = await apiService(ENDPOINT, 'GET');
             setData(response);
-            console.log(response);
         }
         getData();
     }, [])
@@ -30,7 +30,8 @@ const Estructuras = () => {
                     data={data}
                     refColumnas={refColumnas}
                     refPropsColumnas={refPropsColumnas}
-                    linkBase={linkBase}/>
+                    linkBase={linkBase}
+                    alineacionesColumnas={alineacionesColumnas}/>
         </div>
     );
 };
