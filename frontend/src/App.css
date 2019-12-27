@@ -195,9 +195,9 @@ table .textLeft{
   display: none;
   position: absolute;
   top: 30px;
-  left: -150px;
+  left: -200px;
   color: #333;
-  width: 180px;
+  width: 220px;
   transition: all .2s ease-in-out;
   z-index: 1000;
 }
@@ -287,4 +287,16 @@ header.secondary span{
   header.tableHeader{
     margin-top: 2em;
     margin-bottom: .5em;
+  }
+
+  .back {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 1em;
+  }
+  .back ion-icon{
+    font-size: 2em;
+    margin-right: 1em;
   }
