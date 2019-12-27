@@ -1,11 +1,12 @@
 import React,{useEffect, useState} from 'react';
 import Tabla from '../components/tabla';
 import apiService from '../config/apiService';
+import ListHeader from '../components/listHeader';
 
 const TiposDeEstructura = () => {
     const ENDPOINT = 'tipos-de-estructura';
 
-    const columnas = ['ID', 'Nombre', 'Cantidad de estructuras  '];
+    const columnas = ['ID', 'Nombre', 'Cantidad de estructuras'];
     const refColumnas = ['id', 'nombre', 'estructuras'];
     const refPropsColumnas = ['', '', 'length'];
     const linkBase = '/tipos-de-estructura';
@@ -23,9 +24,7 @@ const TiposDeEstructura = () => {
 
     return(
         <div className="main container">
-            <header className="sectionHeader">
-                <h3>Tipos de estructura</h3>
-            </header>
+            <ListHeader titulo="Tipos de estructura" />
             <Tabla  columnas={columnas}
                     data={data}
                     refColumnas={refColumnas}

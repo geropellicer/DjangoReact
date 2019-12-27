@@ -2,6 +2,8 @@ import React,{useEffect, useState} from 'react';
 import Tabla from '../components/tabla';
 import apiService from '../config/apiService';
 
+import ListHeader from '../components/listHeader';
+
 const Aportes = () => {
     const ENDPOINT = 'aportes';
 
@@ -23,9 +25,7 @@ const Aportes = () => {
 
     return(
         <div className="main container">
-            <header className="sectionHeader">
-                <h3>Aportes</h3>
-            </header>
+            <ListHeader titulo="Aportes" />
             <Tabla  columnas={columnas}
                     data={data}
                     refColumnas={refColumnas}

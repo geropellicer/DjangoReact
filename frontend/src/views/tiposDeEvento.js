@@ -1,6 +1,7 @@
 import React,{useEffect, useState} from 'react';
 import Tabla from '../components/tabla';
 import apiService from '../config/apiService';
+import ListHeader from '../components/listHeader';
 
 const TiposDeEvento = () => {
     const ENDPOINT = 'tipos-de-evento';
@@ -23,9 +24,7 @@ const TiposDeEvento = () => {
 
     return(
         <div className="main container">
-            <header className="sectionHeader">
-                <h3>Tipos de evento</h3>
-            </header>
+            <ListHeader titulo="Tipos de evento" />
             <Tabla  columnas={columnas}
                     data={data}
                     refColumnas={refColumnas}
