@@ -9,6 +9,7 @@ import Home from './views/home';
 import Estructuras from './views/estructuras';
 import Estructura from './views/estructura';
 import Login from './views/login';
+import Zonas from './views/zonas';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Switch>
             <Route path="/" component={Home} exact/>
             <Route path="/login" component={Login} exact/>
+            <Route path="/zonas" component={Zonas} exact/>
             <Route path="/estructuras" component={Estructuras} exact/>
             <Route path="/estructuras/:id" component={Estructura} exact/>
           </Switch>
