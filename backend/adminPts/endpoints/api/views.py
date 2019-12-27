@@ -24,7 +24,7 @@ class rolPersonaViewSet(mixins.UpdateModelMixin,
                     GenericViewSet):
     queryset = rolPersona.objects.all()
     serializer_class = rolPersonaSerializer
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
     filter_backends = [SearchFilter]
     search_fields = ['rolPersona.nombre']
     
@@ -46,7 +46,7 @@ class tipoEventoViewSet(mixins.UpdateModelMixin,
                     GenericViewSet):
     queryset = tipoEvento.objects.all()
     serializer_class = tipoEventoSerializer
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
     filter_backends = [SearchFilter]
     search_fields = ['tipoEvento.nombre']
     
@@ -68,7 +68,7 @@ class eventoViewSet(mixins.UpdateModelMixin,
                     GenericViewSet):
     queryset = evento.objects.all()
     serializer_class = eventoSerializer
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
     filter_backends = [SearchFilter]
     search_fields = ['evento.nombre']
     
@@ -90,7 +90,7 @@ class tipoEstructuraViewSet(mixins.UpdateModelMixin,
                     GenericViewSet):
     queryset = tipoEstructura.objects.all()
     serializer_class = tipoEstructuraSerializer
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
     filter_backends = [SearchFilter]
     search_fields = ['tipoEstructura.nombre']
     
@@ -112,7 +112,7 @@ class zonaViewSet(mixins.UpdateModelMixin,
                     GenericViewSet):
     queryset = zona.objects.all()
     serializer_class = zonaSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     filter_backends = [SearchFilter]
     search_fields = ['zona.nombre']
     
@@ -156,7 +156,7 @@ class personaViewSet(mixins.UpdateModelMixin,
                     GenericViewSet):
     queryset = persona.objects.all()
     serializer_class = personaSerializer
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
     filter_backends = [SearchFilter]
     search_fields = ['persona.nombre']
     
@@ -178,7 +178,7 @@ class relacionViewSet(mixins.UpdateModelMixin,
                     GenericViewSet):
     queryset = relacion.objects.all()
     serializer_class = relacionSerializer
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
         serializer.save()
@@ -197,7 +197,7 @@ class tipoAporteViewSet(mixins.UpdateModelMixin,
                     GenericViewSet):
     queryset = tipoAporte.objects.all()
     serializer_class = tipoAporteSerializer
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
     filter_backends = [SearchFilter]
     search_fields = ['tipoAporte.nombre']
     
@@ -219,7 +219,7 @@ class mesViewSet(mixins.UpdateModelMixin,
                     GenericViewSet):
     queryset = mes.objects.all()
     serializer_class = mesSerializer
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
     filter_backends = [SearchFilter]
     search_fields = ['mes.nombre']
     
@@ -241,7 +241,7 @@ class aporteViewSet(mixins.UpdateModelMixin,
                     GenericViewSet):
     queryset = aporte.objects.all()
     serializer_class = aporteSerializer
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
     filter_backends = [SearchFilter]
     search_fields = ['aporte.monto']
     
