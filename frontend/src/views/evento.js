@@ -1,18 +1,19 @@
 import React,{useEffect, useState} from 'react';
 import apiService from '../config/apiService';
 import Tabla from '../components/tabla';
+import DATEOPTIONS from '../config/dateOptions';
 
-const Estructura = (props) => {
+const Evento = (props) => {
 
     const { id } = props.match.params;
 
-    const ENDPOINT = `estructuras/${id}`;
+    const ENDPOINT = `eventos/${id}`;
 
-    const columnas = ['ID', 'Nombre', 'Edad', 'Cantidad de eventos'];
-    const refColumnas = ['id', 'nombre', 'edad', 'eventos'];
-    const refPropsColumnas = ['', '', '', 'length'];
+    const columnas = ['ID', 'Nombre', 'Edad', 'Estructura', 'Cantidad de eventos'];
+    const refColumnas = ['id', 'nombre', 'edad', 'estructura', 'eventos'];
+    const refPropsColumnas = ['', '', '', 'nombre', 'length'];
     const linkBase = '/personas';
-    const alineacionesColumnas = ['c', 'l', 'c', 'c'];
+    const alineacionesColumnas = ['c', 'l', 'c', 'c', 'c'];
 
     const [data, setData] = useState([]);
 
@@ -37,18 +38,18 @@ const Estructura = (props) => {
                     <h5>ID:</h5>
                     <span>{data.id}</span>
                 </div>
-                { data.zona ? (<div>
-                    <h5>Zona:</h5>
-                    <span>{data.zona['nombre']}</span>
+                { data.fecha ? (<div>
+                    <h5>Fecha:</h5>
+                    <span>{new Date(data.fecha).toLocaleDateString('es-AR', DATEOPTIONS)}</span>
                 </div>) : null}
-                { data.zona ? (<div>
+                { data.tipo ? (<div>
                     <h5>Tipo:</h5>
-                    <span>{data.tipo['nombre']}</span>
+                    <span>{data.tipo.nombre}</span>
                 </div>) : null}
             </header>
 
             <header className="secondary tableHeader">
-                   <h5> Personas en { data.nombre }: </h5>
+                   <h5> Personas que fueron a { data.nombre }: </h5>
             </header>
 
             {data.personas ? (
@@ -63,4 +64,4 @@ const Estructura = (props) => {
     );
 };
 
-export default Estructura;
+export default Evento;

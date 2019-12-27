@@ -1,17 +1,18 @@
 import React,{useEffect, useState} from 'react';
 import apiService from '../config/apiService';
 import Tabla from '../components/tabla';
+import DATEOPTIONS from '../config/dateOptions';
 
-const Estructura = (props) => {
+const TipoDeAporte = (props) => {
 
     const { id } = props.match.params;
 
-    const ENDPOINT = `estructuras/${id}`;
+    const ENDPOINT = `tipos-de-aporte/${id}`;
 
-    const columnas = ['ID', 'Nombre', 'Edad', 'Cantidad de eventos'];
-    const refColumnas = ['id', 'nombre', 'edad', 'eventos'];
-    const refPropsColumnas = ['', '', '', 'length'];
-    const linkBase = '/personas';
+    const columnas = ['ID', 'Persona', 'Monto', 'Mes'];
+    const refColumnas = ['id', 'persona', 'monto', 'mes'];
+    const refPropsColumnas = ['', 'nombre', '', 'nombre'];
+    const linkBase = '/aportes';
     const alineacionesColumnas = ['c', 'l', 'c', 'c'];
 
     const [data, setData] = useState([]);
@@ -37,23 +38,15 @@ const Estructura = (props) => {
                     <h5>ID:</h5>
                     <span>{data.id}</span>
                 </div>
-                { data.zona ? (<div>
-                    <h5>Zona:</h5>
-                    <span>{data.zona['nombre']}</span>
-                </div>) : null}
-                { data.zona ? (<div>
-                    <h5>Tipo:</h5>
-                    <span>{data.tipo['nombre']}</span>
-                </div>) : null}
             </header>
 
             <header className="secondary tableHeader">
-                   <h5> Personas en { data.nombre }: </h5>
+                   <h5> Aportes: </h5>
             </header>
 
-            {data.personas ? (
+            {data.aportes ? (
                 <Tabla  columnas={columnas}
-                    data={data.personas}
+                    data={data.aportes}
                     refColumnas={refColumnas}
                     refPropsColumnas={refPropsColumnas}
                     linkBase={linkBase}
@@ -63,4 +56,4 @@ const Estructura = (props) => {
     );
 };
 
-export default Estructura;
+export default TipoDeAporte;

@@ -20,7 +20,6 @@ const Zona = (props) => {
         const getData = async () => {
             const response = await apiService(ENDPOINT, 'GET');
             setData(response);
-            console.log(response);
         }
         getData();
     }, [])

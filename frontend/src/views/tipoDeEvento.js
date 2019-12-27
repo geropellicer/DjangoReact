@@ -1,18 +1,19 @@
 import React,{useEffect, useState} from 'react';
 import apiService from '../config/apiService';
 import Tabla from '../components/tabla';
+import DATEOPTIONS from '../config/dateOptions';
 
-const Estructura = (props) => {
+const TipoDeEvento = (props) => {
 
     const { id } = props.match.params;
 
-    const ENDPOINT = `estructuras/${id}`;
+    const ENDPOINT = `tipos-de-evento/${id}`;
 
-    const columnas = ['ID', 'Nombre', 'Edad', 'Cantidad de eventos'];
-    const refColumnas = ['id', 'nombre', 'edad', 'eventos'];
-    const refPropsColumnas = ['', '', '', 'length'];
-    const linkBase = '/personas';
-    const alineacionesColumnas = ['c', 'l', 'c', 'c'];
+    const columnas = ['ID', 'Nombre', 'Fecha'];
+    const refColumnas = ['id', 'nombre', 'fecha'];
+    const refPropsColumnas = ['', '', ''];
+    const linkBase = '/eventos';
+    const alineacionesColumnas = ['c', 'l', 'c'];
 
     const [data, setData] = useState([]);
 
@@ -37,23 +38,15 @@ const Estructura = (props) => {
                     <h5>ID:</h5>
                     <span>{data.id}</span>
                 </div>
-                { data.zona ? (<div>
-                    <h5>Zona:</h5>
-                    <span>{data.zona['nombre']}</span>
-                </div>) : null}
-                { data.zona ? (<div>
-                    <h5>Tipo:</h5>
-                    <span>{data.tipo['nombre']}</span>
-                </div>) : null}
             </header>
 
             <header className="secondary tableHeader">
-                   <h5> Personas en { data.nombre }: </h5>
+                   <h5> Estructuras: </h5>
             </header>
 
-            {data.personas ? (
+            {data.eventos ? (
                 <Tabla  columnas={columnas}
-                    data={data.personas}
+                    data={data.eventos}
                     refColumnas={refColumnas}
                     refPropsColumnas={refPropsColumnas}
                     linkBase={linkBase}
@@ -63,4 +56,4 @@ const Estructura = (props) => {
     );
 };
 
-export default Estructura;
+export default TipoDeEvento;
