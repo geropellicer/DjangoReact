@@ -5,6 +5,10 @@ html, body, .App.container {
   min-height: 100vh;
 }
 
+button {
+  margin: 0 !important;
+}
+
 header.mainHeader, footer.mainFooter{
   display: flex;
   flex-direction: row;
@@ -55,7 +59,7 @@ footer h6 {
 
 
 .appContent {
-  min-height: calc(100vh - 140px);
+  min-height: calc(100vh - 120px);
 }
 
 .card {
@@ -138,10 +142,22 @@ footer h6 {
   margin: 1em 0 1em 0;
   background: #c50b0b;
   box-sizing: border-box;
-  padding: 1em;
+  padding: 1em 2em;
   color: #fff;
-  padding-left: 2em;
+  justify-content: space-between;
 }
+
+.sectionHeader button{
+  color: #fff;
+  border-color: #fff;
+  font-size: 1.1em;
+  justify-content: space-between;
+}
+
+.sectionHeader button ion-icon{
+  font-size: 1.5em;
+  margin-left: 20px;
+} 
 
 .tableContainer{
   padding: 2em;
