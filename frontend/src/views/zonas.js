@@ -3,13 +3,13 @@ import Tabla from '../components/tabla';
 import apiService from '../config/apiService';
 
 const Estructuras = () => {
-    const ENDPOINT = 'estructuras';
+    const ENDPOINT = 'zonas';
 
-    const columnas = ['ID', 'Nombre', 'Cantidad de estructuras', 'Cantidad de personas'];
-    const refColumnas = ['id', 'nombre', 'estructuras', 'personas'];
-    const refPropsColumnas = ['', '', 'length', 'length'];
+    const columnas = ['ID', 'Nombre', 'Cantidad de estructuras'];
+    const refColumnas = ['id', 'nombre', 'estructuras'];
+    const refPropsColumnas = ['', '', 'length'];
     const linkBase = '/zonas';
-    const alineacionesColumnas = ['c', 'l', 'c', 'c'];
+    const alineacionesColumnas = ['c', 'l', 'c'];
 
     const [data, setData] = useState([]);
 
