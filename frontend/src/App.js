@@ -6,17 +6,23 @@ import Nav from './components/nav';
 import Footer from './components/footer';
 
 import Home from './views/home';
+import Login from './views/login';
+
 import Estructuras from './views/estructuras';
 import Estructura from './views/estructura';
-import Login from './views/login';
 import Zonas from './views/zonas';
 import Zona from './views/zona';
 import RolesDePersonas from './views/rolesDePersonas';
+import RolDePersona from './views/rolDePersona';
 import TiposDeEvento from './views/tiposDeEvento';
+import TipoDeEvento from './views/tipoDeEvento';
 import Eventos from './views/eventos';
+import Evento from './views/evento';
 import TiposDeEstructura from './views/tiposDeEstructura';
+import TipoDeEstructura from './views/tipoDeEstructura';
 import Personas from './views/personas';
 import TiposDeAporte from './views/tiposDeAporte';
+import TipoDeAporte from './views/tipoDeAporte';
 import Aportes from './views/aportes';
 
 
@@ -32,7 +38,7 @@ function App() {
             <Route path="/zonas" component={Zonas} exact/>
             <Route path="/zonas/:id" component={Zona} exact/>
             <Route path="/eventos" component={Eventos} exact/>
-            <Route path="/eventos/:id" component={Eventos} exact/>
+            <Route path="/eventos/:id" component={Evento} exact/>
             <Route path="/aportes" component={Aportes} exact/>
             <Route path="/aportes/:id" component={Aportes} exact/>
             <Route path="/personas" component={Personas} exact/>
@@ -40,13 +46,13 @@ function App() {
             <Route path="/estructuras" component={Estructuras} exact/>
             <Route path="/estructuras/:id" component={Estructura} exact/>
             <Route path="/tipos-de-evento" component={TiposDeEvento} exact/>
-            <Route path="/tipos-de-evento/:id" component={TiposDeEvento} exact/>
+            <Route path="/tipos-de-evento/:id" component={TipoDeEvento} exact/>
             <Route path="/tipos-de-aporte" component={TiposDeAporte} exact/>
-            <Route path="/tipos-de-aporte/:id" component={TiposDeAporte} exact/>
+            <Route path="/tipos-de-aporte/:id" component={TipoDeAporte} exact/>
             <Route path="/roles-de-personas" component={RolesDePersonas} exact/>
-            <Route path="/roles-de-personas/:id" component={RolesDePersonas} exact/>
+            <Route path="/roles-de-personas/:id" component={RolDePersona} exact/>
             <Route path="/tipos-de-estructura" component={TiposDeEstructura} exact/>
-            <Route path="/tipos-de-estructura/:id" component={TiposDeEstructura} exact/>
+            <Route path="/tipos-de-estructura/:id" component={TipoDeEstructura} exact/>
           </Switch>
         </div>
         <Footer/>
