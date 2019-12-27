@@ -8,6 +8,7 @@ const Login = () => {
 
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
+    const [loggedIn, setLoggedIn] = useState(false);
 
     const updatePassword = e => {
         setPassword(e.target.value);
@@ -20,12 +21,13 @@ const Login = () => {
     const login = async (e) => {
         e.preventDefault();
         const response = await apiService(ENDPOINT, 'POST', {'username': username, 'password': password});
-        console.log(response.key);
         window.localStorage.setItem("authToken", response.key);
+        setLoggedIn(true);
     };
 
     return(
         <div className="container verticalAlign columna">
+            { loggedIn ? <Redirect to='/'/> : null}
             <div className="row">
                 <div className="one column"></div>
                 <div className="ten columns">
