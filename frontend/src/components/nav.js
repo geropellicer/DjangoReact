@@ -1,9 +1,12 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const Nav = () => {
     return(
         <header className="mainHeader">
-            <h2>Admin PTS</h2>
+            <Link to="/">
+                <h2>Admin PTS</h2>
+            </Link>
 
             <nav>
                 <ul>

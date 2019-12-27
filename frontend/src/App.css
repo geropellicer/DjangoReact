@@ -19,6 +19,11 @@ header.mainHeader, footer.mainFooter{
   padding: 1em 2em;
 }
 
+.mainHeader a{
+  color: #fff;
+  text-decoration: none;
+}
+
 header h1,
 header h2,
 header h3,
@@ -61,16 +66,23 @@ footer h6 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: inherit;
   align-items: center;
 }
 
+.homeMenu a{
+  text-decoration: none;
+}
 .homeMenu li{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: 1em;
+  min-width: 135px;
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .homeMenu li span {
