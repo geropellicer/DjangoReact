@@ -11,6 +11,7 @@ import Estructura from './views/estructura';
 import Login from './views/login';
 import Zonas from './views/zonas';
 import rolesDePersonas from './views/rolesDePersonas';
+import tiposDeEvento from './views/tiposDeEvento';
 
 function App() {
   return (
@@ -22,9 +23,11 @@ function App() {
             <Route path="/" component={Home} exact/>
             <Route path="/login" component={Login} exact/>
             <Route path="/zonas" component={Zonas} exact/>
-            <Route path="/zonas:id" component={Zonas} exact/>
+            <Route path="/zonas/:id" component={Zonas} exact/>
             <Route path="/estructuras" component={Estructuras} exact/>
             <Route path="/estructuras/:id" component={Estructura} exact/>
+            <Route path="/tipos-de-evento" component={tiposDeEvento} exact/>
+            <Route path="/tipos-de-evento/:id" component={tiposDeEvento} exact/>
             <Route path="/roles-de-personas" component={rolesDePersonas} exact/>
             <Route path="/roles-de-personas/:id" component={rolesDePersonas} exact/>
           </Switch>
