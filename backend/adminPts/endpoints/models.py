@@ -81,11 +81,11 @@ class estructura(models.Model):
 class persona(models.Model):
     nombre = models.CharField(max_length=50)
     rol = models.ForeignKey(rolPersona, on_delete=models.CASCADE, related_name="personas")
-    edad = models.PositiveSmallIntegerField(null=True)
+    edad = models.PositiveSmallIntegerField(null=True, blank=True)
     creado = models.DateTimeField(auto_now_add=True)
     actualizado = models.DateTimeField(auto_now=True)
     estructura = models.ForeignKey(estructura, on_delete=models.CASCADE, related_name="personas", null=True, blank=True)
-    eventos = models.ManyToManyField(evento, related_name="personas")
+    eventos = models.ManyToManyField(evento, related_name="personas", null=True, blank=True)
     # aportes
     # relaciones_propias
     # relacion_de
