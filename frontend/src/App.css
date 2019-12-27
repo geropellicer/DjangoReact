@@ -228,6 +228,9 @@ table .textLeft{
   box-shadow: 0 0 10px 10px rgba(0,0,0,.3);
   border: none;
 }
+.topMenuList ul li:hover a{
+  color: #c50b0b;
+}
 .topMenuList ul li a{
   display: block;
   width: 100%;

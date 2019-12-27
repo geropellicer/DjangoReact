@@ -10,6 +10,7 @@ import Estructuras from './views/estructuras';
 import Estructura from './views/estructura';
 import Login from './views/login';
 import Zonas from './views/zonas';
+import Zona from './views/zona';
 import RolesDePersonas from './views/rolesDePersonas';
 import TiposDeEvento from './views/tiposDeEvento';
 import Eventos from './views/eventos';
@@ -29,7 +30,7 @@ function App() {
             <Route path="/" component={Home} exact/>
             <Route path="/login" component={Login} exact/>
             <Route path="/zonas" component={Zonas} exact/>
-            <Route path="/zonas/:id" component={Zonas} exact/>
+            <Route path="/zonas/:id" component={Zona} exact/>
             <Route path="/eventos" component={Eventos} exact/>
             <Route path="/eventos/:id" component={Eventos} exact/>
             <Route path="/aportes" component={Aportes} exact/>
