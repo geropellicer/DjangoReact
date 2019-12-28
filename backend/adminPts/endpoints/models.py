@@ -30,7 +30,7 @@ class tipoEvento(models.Model):
 
 class evento(models.Model):
     nombre = models.CharField(max_length=50)
-    fecha = models.DateTimeField(null=True)
+    fecha = models.DateField(null=True, blank=True)
     tipo = models.ForeignKey(tipoEvento, on_delete=models.CASCADE, related_name="eventos")
     creado = models.DateTimeField(auto_now_add=True)
     actualizado = models.DateTimeField(auto_now=True)
