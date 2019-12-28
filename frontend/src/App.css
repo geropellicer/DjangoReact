@@ -40,6 +40,7 @@ footer nav{
 
 .mainHeader a{
   text-decoration: none;
+  color: #f91010;
 }
 
 header h1,
@@ -59,7 +60,10 @@ footer h6 {
 
 
 .appContent {
-  min-height: calc(100vh - 120px);
+  min-height: calc(100vh - 130px);
+  position: relative;
+  padding: 2em 0;
+  box-sizing: border-box;
 }
 
 .card {
@@ -135,7 +139,7 @@ footer h6 {
 }
 
 .main.container{
-  padding-top: 2em;
+  margin-top: 1em;
 }
 
 .sectionHeader {
@@ -260,20 +264,8 @@ table .textLeft{
   transform: scale(1.1, 1.1);
 }
 
-@-webkit-keyframes pop-in {
-  0% { opacity: 0; -webkit-transform: scale(0.5); }
-  100% { opacity: 1; -webkit-transform: scale(1); }
-  }
-  @-moz-keyframes pop-in {
-  0% { opacity: 0; -moz-transform: scale(0.5); }
-  100% { opacity: 1; -moz-transform: scale(1); }
-  }
-  @keyframes pop-in {
-  0% { opacity: 0; transform: scale(0.5); }
-  100% { opacity: 1; transform: scale(1); }
-  }
 
-  header.secondary{
+header.secondary{
     display: flex;
     flex-direction: row;
     justify-content: start;
@@ -282,7 +274,7 @@ table .textLeft{
     align-items: center;
     padding-left: 2em;
   }
-
+  
 header.secondary span{
   font-size: 1.2em;
   font-weight: bold;
@@ -316,3 +308,82 @@ header.secondary span{
     font-size: 2em;
     margin-right: 1em;
   }
+
+  .mapa {
+    background: #fff;
+    padding: .2em 2em;
+    margin-bottom: 1em;
+  }
+  .mapa h6{
+    margin: 0;
+  }
+  
+  .oscuro {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,.5);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: fade-in 0.4s ease-in-out forwards;
+}
+
+.popUp{
+  margin: 0 !important;
+  max-width: 650px;
+}
+.popUp form{
+  width: 100%;
+  padding: 2em 3em 0 3em;
+  box-sizing: border-box;
+}
+.popUp form input,
+.popUp form select,
+.popUp form textarea {
+  width: 100%;
+}
+.popUp form button{
+  width: 100%;
+  margin: 2em auto 0 auto !important;
+}
+.popUp:hover{
+  transform: scale(1,1);
+}
+
+
+
+
+
+
+@-webkit-keyframes pop-in {
+  0% { opacity: 0; -webkit-transform: scale(0.5); }
+  100% { opacity: 1; -webkit-transform: scale(1); }
+  }
+  @-moz-keyframes pop-in {
+  0% { opacity: 0; -moz-transform: scale(0.5); }
+  100% { opacity: 1; -moz-transform: scale(1); }
+  }
+  @keyframes pop-in {
+  0% { opacity: 0; transform: scale(0.5); }
+  100% { opacity: 1; transform: scale(1); }
+  }
+
+  @-webkit-keyframes fade-in {
+    0% { opacity: 0;}
+    100% { opacity: 1;}
+    }
+    @-moz-keyframes fade-in {
+    0% { opacity: 0;}
+    100% { opacity: 1;}
+    }
+    @keyframes fade-in {
+    0% { opacity: 0;}
+    100% { opacity: 1;}
+    }
