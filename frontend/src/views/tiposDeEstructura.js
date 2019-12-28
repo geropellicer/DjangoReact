@@ -24,7 +24,7 @@ const TiposDeEstructura = () => {
 
     return(
         <div className="main container">
-            <ListHeader titulo="Tipos de estructura" />
+            <ListHeader titulo="Tipos de estructura" url="/tipos-de-estructura/agregar" />
             <Tabla  columnas={columnas}
                     data={data}
                     refColumnas={refColumnas}
