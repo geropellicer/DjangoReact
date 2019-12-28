@@ -192,7 +192,7 @@ class aporteSerializer(serializers.ModelSerializer):
 
 
 class rolPersonaSerializer(serializers.ModelSerializer):
-    personas = personaResumenConEstructuraSerializer(many=True)
+    personas = personaResumenConEstructuraSerializer(many=True, read_only=True)
     
     class Meta:
         model = rolPersona
