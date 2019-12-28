@@ -256,6 +256,32 @@ const PopUpAdd = (props) => {
     // ////////////////////////////////////////////////////////////////////////////////////
     // ////////////////////////////////////////////////////////////////////////////////////
     // ////////////////////////////////////////////////////////////////////////////////////
+    // Crear Zona
+
+    const [zonaNombre, setZonaNombre] = useState('');
+    
+    const updateZonaNombre = (e) => {
+        setZonaNombre(e.target.value);
+    };
+    
+    const crearZona = async (e) => {
+        e.preventDefault();
+        const dataNuevaZona = {
+            nombre: zonaNombre,
+        }
+        await apiService('zonas/', 'POST', dataNuevaZona);
+        terminar('zonas')
+    }
+
+
+
+
+
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////////////
     // Hooks generales
 
     const terminar = (ruta) => {
@@ -416,6 +442,15 @@ const PopUpAdd = (props) => {
                             <input type="text" name="rolDePersonaNombre" onChange={updateRolDePersonaNombre} value={rolDePersonaNombre} />
                             <input type="text" name="rolDePersonaDescripcion" onChange={updateRolDePersonaDescripcion} value={rolDePersonaDescripcion} />
                             <button className="button-primary">Crear rol de persona</button>
+                        </form>
+                    ) : null
+                }
+                { 
+                    elemento === "zonas"  ? (
+                        <form onSubmit={crearZona} className="columna">
+                            <h2>Agregar nueva zona</h2>
+                            <input type="text" name="zonaNombre" onChange={updateZonaNombre} value={zonaNombre} />
+                            <button className="button-primary">Crear zona</button>
                         </form>
                     ) : null
                 }

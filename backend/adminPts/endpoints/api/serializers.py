@@ -76,7 +76,7 @@ class estructuraSerializer(serializers.ModelSerializer):
 
 
 class zonaSerializer(serializers.ModelSerializer):
-    estructuras = estructuraSerializer(many=True)
+    estructuras = estructuraSerializer(many=True, read_only=True)
 
     class Meta:
         model = zona

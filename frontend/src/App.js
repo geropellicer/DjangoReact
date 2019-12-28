@@ -39,7 +39,7 @@ function App() {
           <Switch>
             <Route path="/" component={Home} exact/>
             <Route path="/login" component={Login} exact/>
-            <Route path="/zonas" component={Zonas} exact/>
+            <Route path="/zonas" component={Zonas} />
             <Route path="/zonas/:id" component={Zona} exact/>
             <Route path="/eventos" component={Eventos}/>
             <Route path="/eventos/:id" component={Evento} exact/>

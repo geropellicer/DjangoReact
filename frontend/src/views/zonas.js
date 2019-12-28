@@ -24,7 +24,7 @@ const Zonas = () => {
 
     return(
         <div className="main container">
-            <ListHeader titulo="Zonas"/>
+            <ListHeader titulo="Zonas" url="/zonas/agregar"/>
             <Tabla  columnas={columnas}
                     data={data}
                     refColumnas={refColumnas}
