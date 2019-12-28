@@ -25,6 +25,8 @@ import TiposDeAporte from './views/tiposDeAporte';
 import TipoDeAporte from './views/tipoDeAporte';
 import Aportes from './views/aportes';
 import Aporte from './views/aporte';
+import Mapa from './components/mapa';
+import PopUpAdd from './components/popUpAdd';
 
 
 function App() {
@@ -33,6 +35,7 @@ function App() {
       <Router>
         <Nav/>
         <div className="appContent">
+          <Mapa/>
           <Switch>
             <Route path="/" component={Home} exact/>
             <Route path="/login" component={Login} exact/>
@@ -44,7 +47,7 @@ function App() {
             <Route path="/aportes/:id" component={Aporte} exact/>
             <Route path="/personas" component={Personas} exact/>
             <Route path="/personas/:id" component={Personas} exact/>
-            <Route path="/estructuras" component={Estructuras} exact/>
+            <Route path="/estructuras" component={Estructuras} />
             <Route path="/estructuras/:id" component={Estructura} exact/>
             <Route path="/tipos-de-evento" component={TiposDeEvento} exact/>
             <Route path="/tipos-de-evento/:id" component={TipoDeEvento} exact/>
@@ -52,9 +55,10 @@ function App() {
             <Route path="/tipos-de-aporte/:id" component={TipoDeAporte} exact/>
             <Route path="/roles-de-personas" component={RolesDePersonas} exact/>
             <Route path="/roles-de-personas/:id" component={RolDePersona} exact/>
-            <Route path="/tipos-de-estructura" component={TiposDeEstructura} exact/>
+            <Route path="/tipos-de-estructura" component={TiposDeEstructura} />
             <Route path="/tipos-de-estructura/:id" component={TipoDeEstructura} exact/>
           </Switch>
+          <Route path="/:elemento/agregar" component={PopUpAdd}/>
         </div>
         <Footer/>
       </Router>
