@@ -53,7 +53,7 @@ function App() {
             <Route path="/tipos-de-evento/:id" component={TipoDeEvento} exact/>
             <Route path="/tipos-de-aporte" component={TiposDeAporte}/>
             <Route path="/tipos-de-aporte/:id" component={TipoDeAporte} exact/>
-            <Route path="/roles-de-personas" component={RolesDePersonas} exact/>
+            <Route path="/roles-de-personas" component={RolesDePersonas} />
             <Route path="/roles-de-personas/:id" component={RolDePersona} exact/>
             <Route path="/tipos-de-estructura" component={TiposDeEstructura} />
             <Route path="/tipos-de-estructura/:id" component={TipoDeEstructura} exact/>

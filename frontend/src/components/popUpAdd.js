@@ -142,6 +142,37 @@ const PopUpAdd = (props) => {
     // ////////////////////////////////////////////////////////////////////////////////////
     // ////////////////////////////////////////////////////////////////////////////////////
     // ////////////////////////////////////////////////////////////////////////////////////
+    // Crear Rol de persona
+
+    const [rolDePersonaNombre, setRolDePersonaNombre] = useState('');
+    const [rolDePersonaDescripcion, setRolDePersonaDescripcion] = useState('');
+    
+    const updateRolDePersonaNombre = (e) => {
+        setRolDePersonaNombre(e.target.value);
+    };
+    const updateRolDePersonaDescripcion = (e) => {
+        setRolDePersonaDescripcion(e.target.value);
+    };
+    
+    const crearRolDePersona = async (e) => {
+        e.preventDefault();
+        const dataNuevoRolDePersona = {
+            nombre: rolDePersonaNombre,
+            descripcion: rolDePersonaDescripcion
+        }
+        await apiService('roles-de-personas/', 'POST', dataNuevoRolDePersona);
+        terminar('roles-de-personas')
+    }
+
+
+
+
+
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////////////
     // Hooks generales
 
     const terminar = (ruta) => {
@@ -223,6 +254,16 @@ const PopUpAdd = (props) => {
                             <h2>Agregar nuevo tipo de aporte</h2>
                             <input type="text" name="tipoDeAporteNombre" onChange={updateTipoDeAporteNombre} value={tipoDeAporteNombre} />
                             <button className="button-primary">Crear tipo de aporte</button>
+                        </form>
+                    ) : null
+                }
+                { 
+                    elemento === "roles-de-personas"  ? (
+                        <form onSubmit={crearRolDePersona} className="columna">
+                            <h2>Agregar nuevo rol de persona</h2>
+                            <input type="text" name="rolDePersonaNombre" onChange={updateRolDePersonaNombre} value={rolDePersonaNombre} />
+                            <input type="text" name="rolDePersonaDescripcion" onChange={updateRolDePersonaDescripcion} value={rolDePersonaDescripcion} />
+                            <button className="button-primary">Crear rol de persona</button>
                         </form>
                     ) : null
                 }
