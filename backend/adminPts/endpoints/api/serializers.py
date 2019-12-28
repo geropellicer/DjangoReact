@@ -20,7 +20,7 @@ class eventoResumenSerializer(serializers.ModelSerializer):
 
 
 class tipoEventoSerializer(serializers.ModelSerializer):
-    eventos = eventoResumenSerializer(many=True)
+    eventos = eventoResumenSerializer(many=True, read_only=True)
 
     class Meta:
         model = tipoEvento

@@ -47,14 +47,15 @@ const PopUpAdd = (props) => {
     };
     
     
-    const crearEstructura = (e) => {
+    const crearEstructura = async (e) => {
         e.preventDefault();
         const dataNuevaEstructura = {
             nombre: estructuraNombre,
             zona: {nombre: estructuraZona},
             tipo: {nombre: estructuraTipo}
         }
-        apiService('estructuras/', 'POST', dataNuevaEstructura);
+        await apiService('estructuras/', 'POST', dataNuevaEstructura);
+        terminar('estructuras');
     }
 
 
@@ -68,7 +69,6 @@ const PopUpAdd = (props) => {
     // ////////////////////////////////////////////////////////////////////////////////////
     // Crear Tipo de estructura
 
-    const [tipoDeEstructuraCreada, setTipoDeEstructuraCreada] = useState(false);
     const [tipoDeEstructuraNombre, settipoDeEstructuraNombre] = useState('');
     const updateTipoDeEstructuraNombre = (e) => {
         settipoDeEstructuraNombre(e.target.value);
@@ -79,8 +79,33 @@ const PopUpAdd = (props) => {
         const dataNuevoTipoDeEstructura = {
             nombre: tipoDeEstructuraNombre,
         }
-        const dataReturned = await apiService('tipos-de-estructura/', 'POST', dataNuevoTipoDeEstructura);
-        terminar('tipos-de-estructura')
+        await apiService('tipos-de-estructura/', 'POST', dataNuevoTipoDeEstructura);
+        terminar('tipos-de-estructura');
+    }
+
+
+
+
+
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // Crear Tipo de evento
+
+    const [tipoDeEventoNombre, settipoDeEventoNombre] = useState('');
+    const updateTipoDeEventoNombre = (e) => {
+        settipoDeEventoNombre(e.target.value);
+    };
+    
+    const crearTipoDeEvento = async (e) => {
+        e.preventDefault();
+        const dataNuevoTipoDeEvento = {
+            nombre: tipoDeEventoNombre,
+        }
+        await apiService('tipos-de-evento/', 'POST', dataNuevoTipoDeEvento);
+        terminar('tipos-de-evento')
     }
 
 
@@ -156,6 +181,15 @@ const PopUpAdd = (props) => {
                             <h2>Agregar nuevo tipo de estructura</h2>
                             <input type="text" name="tipoDeEstructuraNombre" onChange={updateTipoDeEstructuraNombre} value={tipoDeEstructuraNombre} />
                             <button className="button-primary">Crear tipo de estructura</button>
+                        </form>
+                    ) : null
+                }
+                { 
+                    elemento === "tipos-de-evento"  ? (
+                        <form onSubmit={crearTipoDeEvento} className="columna">
+                            <h2>Agregar nuevo tipo de evento</h2>
+                            <input type="text" name="tipoDeEventoNombre" onChange={updateTipoDeEventoNombre} value={tipoDeEventoNombre} />
+                            <button className="button-primary">Crear tipo de evento</button>
                         </form>
                     ) : null
                 }
