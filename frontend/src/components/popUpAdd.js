@@ -107,7 +107,31 @@ const PopUpAdd = (props) => {
         await apiService('tipos-de-evento/', 'POST', dataNuevoTipoDeEvento);
         terminar('tipos-de-evento')
     }
+    
+    
+    
+    
+    
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // Crear Tipo de aporte
 
+    const [tipoDeAporteNombre, settipoDeAporteNombre] = useState('');
+    const updateTipoDeAporteNombre = (e) => {
+        settipoDeAporteNombre(e.target.value);
+    };
+    
+    const crearTipoDeAporte = async (e) => {
+        e.preventDefault();
+        const dataNuevoTipoDeAporte = {
+            nombre: tipoDeAporteNombre,
+        }
+        await apiService('tipos-de-aporte/', 'POST', dataNuevoTipoDeAporte);
+        terminar('tipos-de-aporte')
+    }
 
 
 
@@ -190,6 +214,15 @@ const PopUpAdd = (props) => {
                             <h2>Agregar nuevo tipo de evento</h2>
                             <input type="text" name="tipoDeEventoNombre" onChange={updateTipoDeEventoNombre} value={tipoDeEventoNombre} />
                             <button className="button-primary">Crear tipo de evento</button>
+                        </form>
+                    ) : null
+                }
+                { 
+                    elemento === "tipos-de-aporte"  ? (
+                        <form onSubmit={crearTipoDeAporte} className="columna">
+                            <h2>Agregar nuevo tipo de aporte</h2>
+                            <input type="text" name="tipoDeAporteNombre" onChange={updateTipoDeAporteNombre} value={tipoDeAporteNombre} />
+                            <button className="button-primary">Crear tipo de aporte</button>
                         </form>
                     ) : null
                 }

@@ -24,7 +24,7 @@ const TiposDeAporte = () => {
 
     return(
         <div className="main container">
-           <ListHeader titulo="Tipos de aporte"/>
+           <ListHeader titulo="Tipos de aporte" url='/tipos-de-aporte/agregar'/>
             <Tabla  columnas={columnas}
                     data={data}
                     refColumnas={refColumnas}
