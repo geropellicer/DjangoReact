@@ -53,11 +53,27 @@ class personaResumenSerializer(serializers.ModelSerializer):
 class estructuraSerializer(serializers.ModelSerializer):
     zona = zonaResumenSerializer()
     tipo = tipoEstructuraResumenSerializer()
-    personas = personaResumenSerializer(many=True)
+    personas = personaResumenSerializer(many=True, read_only=True)
 
     class Meta:
         model = estructura
         fields = "__all__"
+
+    def create(self, validated_data):
+        print(validated_data)
+        instanceZona = validated_data.pop('zona')
+        instanceTipo = validated_data.pop('tipo')
+
+        zonaNombre = str(list(instanceZona.items())[0][1])
+        tipoNombre = str(list(instanceTipo.items())[0][1])
+
+        estructuraNombre = validated_data.pop('nombre')
+
+        zInstance = zona.objects.get(nombre=zonaNombre)
+        tInstance = tipoEstructura.objects.get(nombre=tipoNombre)
+        nuevaEstructura = estructura.objects.create(nombre=estructuraNombre, zona=zInstance, tipo=tInstance)
+        
+        return nuevaEstructura
 
 
 class zonaSerializer(serializers.ModelSerializer):
@@ -69,7 +85,7 @@ class zonaSerializer(serializers.ModelSerializer):
 
 
 class tipoEstructuraSerializer(serializers.ModelSerializer):
-    estructuras = estructuraSerializer(many=True)
+    estructuras = estructuraSerializer(many=True, read_only=True)
 
     class Meta:
         model = tipoEstructura
@@ -156,7 +172,7 @@ class aporteResumenSerializer(serializers.ModelSerializer):
 
 
 class tipoAporteSerializer(serializers.ModelSerializer):
-    aportes = aporteResumenSerializer(many=True)
+    aportes = aporteResumenSerializer(many=True, read_only=True)
 
     class Meta:
         model = tipoAporte
