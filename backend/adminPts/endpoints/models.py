@@ -130,7 +130,7 @@ class aporte(models.Model):
     creado = models.DateTimeField(auto_now_add=True)
     actualizado = models.DateTimeField(auto_now=True)
     def __str__(self):
-        return "" + self.tipoAporte.nombre + " " + self.mes.nombre + " de " + self.persona.nombre + " - $" + str(self.monto)
+        return "Aporte #" + str(self.id) + " " + self.tipoAporte.nombre + " de " + self.persona.nombre + " - $" + str(self.monto)
 
     class Meta:
         verbose_name_plural = "aportes"
