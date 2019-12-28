@@ -61,6 +61,50 @@ const PopUpAdd = (props) => {
 
 
 
+
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // Crear Estructura
+
+    const [aporteMonto, setAporteMonto] = useState('');
+    const [personaAporte, setPersonaAporte] = useState('');
+    const [fechaAporte, setFechaAporte] = useState('');
+    const [tipoAporte, setTipoAporte] = useState('');
+    const [tiposAporte, setTiposAporte] = useState([]);
+    const [personas, setPersonas] = useState([]);
+
+    
+    const updateAporteMonto = (e) => {
+        setAporteMonto(e.target.value);
+    };
+    const updatePersonaAporte = (e) => {
+        setPersonaAporte(e.target.value);
+    };
+    const updateFechaAporte = (e) => {
+        setFechaAporte(e.target.value);
+    };
+    const updateTipoAporte = (e) => {
+        setTipoAporte(e.target.value);
+    };
+    
+    const crearAporte = async (e) => {
+        e.preventDefault();
+        const dataNuevaEstructura = {
+            monto: aporteMonto,
+            fecha: fechaAporte,
+            tipoAporte: {nombre: tipoAporte},
+            persona: {nombre: personaAporte.split('|')[0], rol: parseInt(personaAporte.split('|')[1])}
+        }
+        await apiService('aportes/', 'POST', dataNuevaEstructura);
+        terminar('aportes');
+    }
+
+
+
+
     
     // ////////////////////////////////////////////////////////////////////////////////////
     // ////////////////////////////////////////////////////////////////////////////////////
@@ -191,9 +235,21 @@ const PopUpAdd = (props) => {
                 const response = await apiService('tipos-de-estructura', 'GET');
                 setTiposEstructura(response);
             }
+            const getPersonas = async () => {
+                const response = await apiService('personas', 'GET');
+                setPersonas(response);
+            }
+            const getTiposDeAporte = async () => {
+                const response = await apiService('tipos-de-aporte', 'GET');
+                setTiposAporte(response);
+            }
             if(elemento === 'estructuras') {
                 getZonas();
                 getTiposEstructura();
+            }
+            if(elemento === 'aportes'){
+                getPersonas();
+                getTiposDeAporte();
             }
         }
     , []);
@@ -227,6 +283,36 @@ const PopUpAdd = (props) => {
                                 }
                             </select>
                             <button className="button-primary">Crear estructura</button>
+                        </form>
+                    ) : null
+                }
+                { 
+                    elemento === "aportes"  ? (
+                        <form onSubmit={crearAporte} className="columna">
+                            <h2>Agregar nuevo aporte</h2>
+                            <input type="number" name="aporteMonto" onChange={updateAporteMonto} value={aporteMonto} />
+                            <select name="personaAporte" value={personaAporte} onChange={updatePersonaAporte}>
+                                <option defaultValue value="0">Seleccione...</option>
+                                {
+                                    personas.map(
+                                        persona => (
+                                        <option key={persona.id} value={persona.nombre + '|' + persona.rol.id}>{persona.nombre} de {persona.estructura.nombre}</option>
+                                        )
+                                    )
+                                }
+                            </select>
+                            <input type="date" name="fechaAporte" onChange={updateFechaAporte} value={fechaAporte} />
+                            <select name="tipoAporte" value={tipoAporte} onChange={updateTipoAporte}>
+                                <option defaultValue value="0">Seleccione...</option>
+                                {
+                                    tiposAporte.map(
+                                        tipo => (
+                                            <option key={tipo.id} value={tipo.nombre}>{tipo.nombre}</option>
+                                        )
+                                    )
+                                }
+                            </select>
+                            <button className="button-primary">Crear aporte</button>
                         </form>
                     ) : null
                 }

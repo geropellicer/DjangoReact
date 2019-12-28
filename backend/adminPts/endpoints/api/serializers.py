@@ -60,7 +60,6 @@ class estructuraSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
     def create(self, validated_data):
-        print(validated_data)
         instanceZona = validated_data.pop('zona')
         instanceTipo = validated_data.pop('tipo')
 
@@ -181,6 +180,21 @@ class aporteSerializer(serializers.ModelSerializer):
     class Meta:
         model = aporte
         fields = "__all__"
+
+    def create(self, validated_data):
+        monto = validated_data.pop('monto')
+        fecha = validated_data.pop('fecha')
+        instancePersona = validated_data.pop('persona')
+        instanceTipo = validated_data.pop('tipoAporte')
+
+        personaNombre = str(list(instancePersona.items())[0][1])
+        tipoNombre = str(list(instanceTipo.items())[0][1])
+
+        pInstance = persona.objects.get(nombre=personaNombre)
+        taInstance = tipoAporte.objects.get(nombre=tipoNombre)
+        nuevoAporte = aporte.objects.create(monto=monto, fecha=fecha, persona=pInstance, tipoAporte=taInstance)
+        
+        return nuevoAporte
 
 
 class rolPersonaSerializer(serializers.ModelSerializer):

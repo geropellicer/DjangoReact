@@ -7,9 +7,9 @@ import ListHeader from '../components/listHeader';
 const Aportes = () => {
     const ENDPOINT = 'aportes';
 
-    const columnas = ['ID', 'Persona', 'Monto', 'Mes', 'Tipo'];
-    const refColumnas = ['id', 'persona', 'monto', 'mes', 'tipoAporte'];
-    const refPropsColumnas = ['', 'nombre', '', 'nombre', 'nombre'];
+    const columnas = ['ID', 'Persona', 'Monto', 'Fecha', 'Tipo'];
+    const refColumnas = ['id', 'persona', 'monto', 'fecha', 'tipoAporte'];
+    const refPropsColumnas = ['', 'nombre', '', '', 'nombre'];
     const linkBase = '/aportes';
     const alineacionesColumnas = ['c', 'l', 'c', 'c', 'c'];
 
@@ -25,7 +25,7 @@ const Aportes = () => {
 
     return(
         <div className="main container">
-            <ListHeader titulo="Aportes" />
+            <ListHeader titulo="Aportes" url='/aportes/agregar' />
             <Tabla  columnas={columnas}
                     data={data}
                     refColumnas={refColumnas}

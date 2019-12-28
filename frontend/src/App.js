@@ -43,7 +43,7 @@ function App() {
             <Route path="/zonas/:id" component={Zona} exact/>
             <Route path="/eventos" component={Eventos} exact/>
             <Route path="/eventos/:id" component={Evento} exact/>
-            <Route path="/aportes" component={Aportes} exact/>
+            <Route path="/aportes" component={Aportes}/>
             <Route path="/aportes/:id" component={Aporte} exact/>
             <Route path="/personas" component={Personas} exact/>
             <Route path="/personas/:id" component={Personas} exact/>
