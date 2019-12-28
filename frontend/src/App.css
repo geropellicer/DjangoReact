@@ -158,9 +158,18 @@ footer h6 {
   justify-content: space-between;
 }
 
-.sectionHeader button ion-icon{
+.sectionHeader button.agregar ion-icon{
   font-size: 1.5em;
   margin-left: 20px;
+} 
+.sectionHeader button.eliminar,
+  .sectionHeader button.editar{
+  padding: 0 15px;
+  margin-right: 1em !important;
+} 
+.sectionHeader button.eliminar ion-icon,
+  .sectionHeader button.editar ion-icon{
+  font-size: 1.6em;
 } 
 
 .tableContainer{
