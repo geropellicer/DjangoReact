@@ -121,22 +121,10 @@ class tipoAporte(models.Model):
         verbose_name_plural = "tipos de aporte"
 
 
-class mes(models.Model):
-    nombre = models.CharField(max_length=50)
-    numero = models.PositiveSmallIntegerField()
-    creado = models.DateTimeField(auto_now_add=True)
-    actualizado = models.DateTimeField(auto_now=True)
-    def __str__(self):
-        return self.nombre
-
-    class Meta:
-        verbose_name_plural = "meses"
-
-
 
 class aporte(models.Model):
     tipoAporte = models.ForeignKey(tipoAporte, on_delete=models.CASCADE, related_name="aportes")
-    mes = models.ForeignKey(mes, on_delete=models.CASCADE, related_name="aportes")
+    fecha = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
     persona = models.ForeignKey(persona, on_delete=models.CASCADE, related_name="aportes")
     monto = models.PositiveSmallIntegerField()
     creado = models.DateTimeField(auto_now_add=True)

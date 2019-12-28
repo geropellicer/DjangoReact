@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from endpoints.models import (rolPersona, tipoEvento, evento, persona, relacion,
-                            tipoAporte, mes, aporte, tipoEstructura, zona, estructura)
+                            tipoAporte, aporte, tipoEstructura, zona, estructura)
 
 
 
@@ -155,16 +155,9 @@ class eventoSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class mesSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = mes
-        fields = "__all__"
-
 
 class aporteResumenSerializer(serializers.ModelSerializer):
     persona = personaResumenSerializer()
-    mes = mesSerializer()
 
     class Meta:
         model = aporte
@@ -183,7 +176,6 @@ class tipoAporteSerializer(serializers.ModelSerializer):
 
 class aporteSerializer(serializers.ModelSerializer):
     tipoAporte = tipoAporteSerializer()
-    mes = mesSerializer()
     persona = personaResumenSerializer()
 
     class Meta:

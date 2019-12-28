@@ -2,7 +2,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from endpoints.api.views import (rolPersonaViewSet, tipoEventoViewSet, eventoViewSet,
                             personaViewSet, relacionViewSet, tipoAporteViewSet,
-                            mesViewSet, aporteViewSet, tipoEstructuraViewSet,
+                            aporteViewSet, tipoEstructuraViewSet,
                             zonaViewSet, estructuraViewSet)
 
 router = DefaultRouter()
@@ -15,7 +15,6 @@ router.register(r"estructuras", estructuraViewSet)
 router.register(r"personas", personaViewSet)
 router.register(r"relaciones", relacionViewSet)
 router.register(r"tipos-de-aporte", tipoAporteViewSet)
-router.register(r"meses", mesViewSet)
 router.register(r"aportes", aporteViewSet)
 
 

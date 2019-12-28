@@ -8,7 +8,6 @@ from endpoints.models import estructura
 from endpoints.models import persona
 from endpoints.models import relacion
 from endpoints.models import tipoAporte
-from endpoints.models import mes
 from endpoints.models import aporte
 
 
@@ -22,5 +21,4 @@ admin.site.register(estructura)
 admin.site.register(persona)
 admin.site.register(relacion)
 admin.site.register(tipoAporte)
-admin.site.register(mes)
 admin.site.register(aporte)

@@ -9,10 +9,10 @@ from rest_framework.viewsets import ModelViewSet, GenericViewSet
 
 
 from endpoints.models import (rolPersona, tipoEvento, evento, persona, relacion,
-                            tipoAporte, mes, aporte, tipoEstructura, zona, estructura)
+                            tipoAporte, aporte, tipoEstructura, zona, estructura)
 from endpoints.api.serializers import (rolPersonaSerializer, tipoEventoSerializer,
                                 eventoSerializer, personaSerializer, relacionSerializer,
-                                tipoAporteSerializer, mesSerializer, aporteSerializer,
+                                tipoAporteSerializer, aporteSerializer,
                                 tipoEstructuraSerializer, zonaSerializer, estructuraSerializer)
 
 
@@ -209,26 +209,6 @@ class tipoAporteViewSet(mixins.UpdateModelMixin,
         instance.delete()
 
 
-
-
-class mesViewSet(mixins.UpdateModelMixin,
-                    mixins.ListModelMixin,
-                    mixins.RetrieveModelMixin,
-                    mixins.CreateModelMixin,
-                    mixins.DestroyModelMixin,
-                    GenericViewSet):
-    queryset = mes.objects.all()
-    serializer_class = mesSerializer
-    #permission_classes = [IsAuthenticated]
-    filter_backends = [SearchFilter]
-    search_fields = ['mes.nombre']
-    
-
-    def perform_create(self, serializer):
-        serializer.save()
-
-    def perform_destroy(self, instance):
-        instance.delete()
 
 
 
