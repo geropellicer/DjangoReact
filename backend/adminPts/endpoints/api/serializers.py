@@ -147,11 +147,24 @@ class personaSerializer(serializers.ModelSerializer):
 
 class eventoSerializer(serializers.ModelSerializer):
     tipo = tipoEventoSerializer()
-    personas = personaResumenConEstructuraSerializer(many=True)
+    personas = personaResumenConEstructuraSerializer(many=True, read_only=True)
 
     class Meta:
         model = evento
         fields = "__all__"
+
+    def create(self, validated_data):
+        nombre = validated_data.pop('nombre')
+        fecha = validated_data.pop('fecha')
+
+        instanceTipo = validated_data.pop('tipo')
+
+        tipoNombre = str(list(instanceTipo.items())[0][1])
+        
+        tInstance = tipoEvento.objects.get(nombre=tipoNombre)
+        nuevoEvento = evento.objects.create(nombre=nombre, fecha=fecha, tipo=tInstance)
+        
+        return nuevoEvento
 
 
 

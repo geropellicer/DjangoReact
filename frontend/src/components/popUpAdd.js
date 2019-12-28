@@ -105,7 +105,46 @@ const PopUpAdd = (props) => {
 
 
 
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////////////
+    // Crear Evento
+
+    const [eventoNombre, setEventoNombre] = useState('');
+    const [fechaEvento, setFechaEvento] = useState('');
+    const [tipoEvento, setTipoEvento] = useState('');
+    const [tiposDeEvento, setTiposDeEvento] = useState([]);
+
     
+    const updateEventoNombre = (e) => {
+        setEventoNombre(e.target.value);
+    };
+    
+    const updateFechaEvento = (e) => {
+        setFechaEvento(e.target.value);
+    };
+
+    const updateTipoEvento = (e) => {
+        setTipoEvento(e.target.value);
+    };
+    
+    const crearEvento = async (e) => {
+        e.preventDefault();
+        const dataNuevoEvento = {
+            nombre: eventoNombre,
+            fecha: fechaEvento, 
+            tipo: {nombre: tipoEvento}
+        }
+        await apiService('eventos/', 'POST', dataNuevoEvento);
+        terminar('eventos');
+    }
+
+
+
+
+
     // ////////////////////////////////////////////////////////////////////////////////////
     // ////////////////////////////////////////////////////////////////////////////////////
     // ////////////////////////////////////////////////////////////////////////////////////
@@ -243,6 +282,10 @@ const PopUpAdd = (props) => {
                 const response = await apiService('tipos-de-aporte', 'GET');
                 setTiposAporte(response);
             }
+            const getTiposDeEvento = async() => {
+                const response = await apiService('tipos-de-evento', 'GET');
+                setTiposDeEvento(response);
+            }
             if(elemento === 'estructuras') {
                 getZonas();
                 getTiposEstructura();
@@ -250,6 +293,9 @@ const PopUpAdd = (props) => {
             if(elemento === 'aportes'){
                 getPersonas();
                 getTiposDeAporte();
+            }
+            if(elemento === 'eventos'){
+                getTiposDeEvento();
             }
         }
     , []);
@@ -313,6 +359,26 @@ const PopUpAdd = (props) => {
                                 }
                             </select>
                             <button className="button-primary">Crear aporte</button>
+                        </form>
+                    ) : null
+                }
+                { 
+                    elemento === "eventos"  ? (
+                        <form onSubmit={crearEvento} className="columna">
+                            <h2>Agregar nuevo evento</h2>
+                            <input type="text" name="eventoNombre" onChange={updateEventoNombre} value={eventoNombre} />
+                            <select name="tipoEvento" value={tipoEvento} onChange={updateTipoEvento}>
+                                <option defaultValue value="0">Seleccione...</option>
+                                {
+                                    tiposDeEvento.map(
+                                        tipo => (
+                                            <option key={tipo.id} value={tipo.nombre}>{tipo .nombre}</option>
+                                        )
+                                    )
+                                }
+                            </select>
+                            <input type="date" name="fechaEvento" onChange={updateFechaEvento} value={fechaEvento} />
+                            <button className="button-primary">Crear evento</button>
                         </form>
                     ) : null
                 }

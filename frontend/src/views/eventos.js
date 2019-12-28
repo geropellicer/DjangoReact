@@ -24,7 +24,7 @@ const Eventos = () => {
 
     return(
         <div className="main container">
-            <ListHeader titulo="Eventos"/>
+            <ListHeader titulo="Eventos" url="/eventos/agregar"/>
             <Tabla  columnas={columnas}
                     data={data}
                     refColumnas={refColumnas}
