@@ -376,6 +376,9 @@ table button{
 table button ion-icon{
   font-size: 1.5em;
 }
+.centerTh{
+  text-align: center;
+}
 
 
 

@@ -51,10 +51,10 @@ const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase, alineac
                         )
                     }
                     {
-                        editMode ? (<th><ion-icon name="create"></ion-icon></th>) : null
+                        editMode ? (<th className="centerTh"><ion-icon name="create"></ion-icon></th>) : null
                     }
                     {
-                        removeMode ? (<th><ion-icon name="trash"></ion-icon></th>) : null
+                        removeMode ? (<th className="centerTh"><ion-icon name="trash"></ion-icon></th>) : null
                     }
                     </tr>
                 </thead>
@@ -76,10 +76,10 @@ const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase, alineac
                                         )
                                     }
                                     {
-                                        editMode ? (<td><button><ion-icon name="create"></ion-icon></button></td>) : null
+                                        editMode ? (<td className="columna"><button><ion-icon name="create"></ion-icon></button></td>) : null
                                     }
                                     {
-                                        removeMode ? (<td><button><ion-icon name="trash"></ion-icon></button></td>) : null
+                                        removeMode ? (<td className="columna"><button><ion-icon name="trash"></ion-icon></button></td>) : null
                                     }
                                 </tr>
                                 )
