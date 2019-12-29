@@ -12,7 +12,7 @@ const PopUpRemove = (props) => {
     
     const goBack = (e) => {
         if(e.target.className === 'oscuro'){
-            history.push("./");
+            history.push("../");
         }
     }
     const manualGoBack = () => {

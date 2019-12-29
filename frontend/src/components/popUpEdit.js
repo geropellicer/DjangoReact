@@ -1,18 +1,18 @@
 import React,{useEffect, useState} from 'react';
 import apiService from '../config/apiService';
-import { useHistory } from "react-router-dom";
-import DATEOPTIONS from '../config/dateOptions';
+import { useHistory, useParams } from "react-router-dom";
 
 
 const PopUpEdit = (props) => {
 
-    const { elemento, id } = props.match.params;
+    //const { elemento, id } = props.match.params;
+    let { single, elemento, id } = useParams()
     
     const history = useHistory();
     
     const goBack = (e) => {
         if(e.target.className === 'oscuro'){
-            history.push("./");
+            history.push("../");
         }
     }
     const manualGoBack = () => {
@@ -216,6 +216,10 @@ const PopUpEdit = (props) => {
                 getTiposDeEstructura();
                 getZonas();
             }
+
+            console.log("Elemento: " + elemento);
+            console.log("ID: " + id);
+            console.log("Single: " + single);
         }
     , []);
 
@@ -308,7 +312,6 @@ const PopUpEdit = (props) => {
                             <div>
                                 { elementoEditar ? (
                                     <div>
-                                        <h2>Agregar nueva estructura</h2>
                                         <input type="text" name="estructuraNombre" onChange={updateEstructuraNombre} value={estructuraNombre} />
                                         <select name="zona" value={estructuraZona} onChange={updateEstructuraZona}>
                                             <option defaultValue value="0">Seleccione...</option>

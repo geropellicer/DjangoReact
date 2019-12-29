@@ -1,6 +1,7 @@
 import React,{useEffect, useState} from 'react';
 import apiService from '../config/apiService';
 import Tabla from '../components/tabla';
+import ItemHeader from '../components/itemHeader';
 
 const Estructura = (props) => {
 
@@ -28,9 +29,7 @@ const Estructura = (props) => {
     return(
         <div className="main container">
             
-            <header className="sectionHeader">
-                <h3>{data.nombre}</h3>
-            </header>
+           <ItemHeader titulo={data.nombre} url={`estructuras/${data.id}`}/>
 
             <header className="secondary">
                 <div>
