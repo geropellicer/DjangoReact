@@ -25,8 +25,10 @@ import TiposDeAporte from './views/tiposDeAporte';
 import TipoDeAporte from './views/tipoDeAporte';
 import Aportes from './views/aportes';
 import Aporte from './views/aporte';
+
 import Mapa from './components/mapa';
 import PopUpAdd from './components/popUpAdd';
+import PopUpRemove from './components/popUpRemove';
 
 import {EditModeProvider} from './components/editModeContext'; 
 import {RemoveModeProvider} from './components/removeModeContext'; 
@@ -64,6 +66,7 @@ function App() {
               <Route path="/tipos-de-estructura/:id" component={TipoDeEstructura} exact/>
             </Switch>
             <Route path="/:elemento/agregar" component={PopUpAdd}/>
+            <Route path="/:elemento/:id/eliminar" component={PopUpRemove}/>
           </div>
           <Footer/>
         </Router>

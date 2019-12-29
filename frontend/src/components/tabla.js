@@ -51,10 +51,10 @@ const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase, alineac
                         )
                     }
                     {
-                        editMode ? (<th className="centerTh"><ion-icon name="create"></ion-icon></th>) : null
+                        editMode.mode ? (<th className="centerTh"><ion-icon name="create"></ion-icon></th>) : null
                     }
                     {
-                        removeMode ? (<th className="centerTh"><ion-icon name="trash"></ion-icon></th>) : null
+                        removeMode.mode ? (<th className="centerTh"><ion-icon name="trash"></ion-icon></th>) : null
                     }
                     </tr>
                 </thead>
@@ -76,10 +76,22 @@ const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase, alineac
                                         )
                                     }
                                     {
-                                        editMode ? (<td className="columna"><button><ion-icon name="create"></ion-icon></button></td>) : null
+                                        editMode.mode ? (
+                                            <td className="columna">
+                                                <Link to={`${linkBase}/${fila[0]['valor']}/editar`}>
+                                                    <button><ion-icon name="create"></ion-icon></button>
+                                                </Link>
+                                            </td>
+                                            ) : null
                                     }
                                     {
-                                        removeMode ? (<td className="columna"><button><ion-icon name="trash"></ion-icon></button></td>) : null
+                                        removeMode.mode ? (
+                                            <td className="columna">
+                                                <Link to={`${linkBase}/${fila[0]['valor']}/eliminar`}>
+                                                    <button><ion-icon name="trash"></ion-icon></button>
+                                                </Link>
+                                            </td>
+                                        ) : null
                                     }
                                 </tr>
                                 )

@@ -9,12 +9,12 @@ const ListHeader = ({titulo, url}) => {
     const [removeMode, setRemoveMode] = useContext(RemoveModeContext);
 
     const updateEditMode = () => {
-        setEditMode(!editMode);
-        setRemoveMode(false);
+        setEditMode({mode: !editMode.mode, object: {}});
+        setRemoveMode({mode: false, object: {}});
     } 
     const updateRemoveMode = () => {
-        setRemoveMode(!removeMode);
-        setEditMode(false);
+        setRemoveMode({mode: !removeMode.mode, object: {}});
+        setEditMode({mode: false, object: {}});
     }
 
     return(

@@ -14,9 +14,6 @@ const PopUpAdd = (props) => {
             history.push("./");
         }
     }
-    const manualGoBack = () => {
-        history.push("./");
-    }
 
 
 
