@@ -365,6 +365,18 @@ header.secondary span{
 .popUp:hover{
   transform: scale(1,1);
 }
+table button{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0 15px;
+}
+table button ion-icon{
+  font-size: 1.5em;
+}
+
 
 
 

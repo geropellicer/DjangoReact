@@ -76,10 +76,10 @@ const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase, alineac
                                         )
                                     }
                                     {
-                                        editMode ? (<td><ion-icon name="create"></ion-icon></td>) : null
+                                        editMode ? (<td><button><ion-icon name="create"></ion-icon></button></td>) : null
                                     }
                                     {
-                                        removeMode ? (<td><ion-icon name="trash"></ion-icon></td>) : null
+                                        removeMode ? (<td><button><ion-icon name="trash"></ion-icon></button></td>) : null
                                     }
                                 </tr>
                                 )
