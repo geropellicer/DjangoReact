@@ -1,8 +1,13 @@
-import React,{useEffect, useState} from 'react';
+import React,{useEffect, useState, useContext} from 'react';
 import {Link} from 'react-router-dom';
 import DATEOPTIONS from '../config/dateOptions';
+import {EditModeContext} from './editModeContext';
+import {RemoveModeContext} from './removeModeContext';
 
 const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase, alineacionesColumnas}) => {
+
+    const [editMode, setEditMode] = useContext(EditModeContext);
+    const [removeMode, setRemoveMode] = useContext(RemoveModeContext);
 
     useEffect(() => {
         prepararFilas();
@@ -45,6 +50,12 @@ const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase, alineac
                             )
                         )
                     }
+                    {
+                        editMode ? (<th><ion-icon name="create"></ion-icon></th>) : null
+                    }
+                    {
+                        removeMode ? (<th><ion-icon name="trash"></ion-icon></th>) : null
+                    }
                     </tr>
                 </thead>
                 <tbody>
@@ -63,6 +74,12 @@ const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase, alineac
                                                 </td>
                                             )
                                         )
+                                    }
+                                    {
+                                        editMode ? (<td><ion-icon name="create"></ion-icon></td>) : null
+                                    }
+                                    {
+                                        removeMode ? (<td><ion-icon name="trash"></ion-icon></td>) : null
                                     }
                                 </tr>
                                 )

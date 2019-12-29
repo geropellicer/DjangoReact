@@ -28,41 +28,48 @@ import Aporte from './views/aporte';
 import Mapa from './components/mapa';
 import PopUpAdd from './components/popUpAdd';
 
+import {EditModeProvider} from './components/editModeContext'; 
+import {RemoveModeProvider} from './components/removeModeContext'; 
+
 
 function App() {
   return (
-    <div className="App container">
-      <Router>
-        <Nav/>
-        <div className="appContent">
-          <Mapa/>
-          <Switch>
-            <Route path="/" component={Home} exact/>
-            <Route path="/login" component={Login} exact/>
-            <Route path="/zonas" component={Zonas} />
-            <Route path="/zonas/:id" component={Zona} exact/>
-            <Route path="/eventos" component={Eventos}/>
-            <Route path="/eventos/:id" component={Evento} exact/>
-            <Route path="/aportes" component={Aportes}/>
-            <Route path="/aportes/:id" component={Aporte} exact/>
-            <Route path="/personas" component={Personas} exact/>
-            <Route path="/personas/:id" component={Personas} exact/>
-            <Route path="/estructuras" component={Estructuras} />
-            <Route path="/estructuras/:id" component={Estructura} exact/>
-            <Route path="/tipos-de-evento" component={TiposDeEvento}/>
-            <Route path="/tipos-de-evento/:id" component={TipoDeEvento} exact/>
-            <Route path="/tipos-de-aporte" component={TiposDeAporte}/>
-            <Route path="/tipos-de-aporte/:id" component={TipoDeAporte} exact/>
-            <Route path="/roles-de-personas" component={RolesDePersonas} />
-            <Route path="/roles-de-personas/:id" component={RolDePersona} exact/>
-            <Route path="/tipos-de-estructura" component={TiposDeEstructura} />
-            <Route path="/tipos-de-estructura/:id" component={TipoDeEstructura} exact/>
-          </Switch>
-          <Route path="/:elemento/agregar" component={PopUpAdd}/>
-        </div>
-        <Footer/>
-      </Router>
-    </div>
+    <EditModeProvider>
+      <RemoveModeProvider>
+      <div className="App container">
+        <Router>
+          <Nav/>
+          <div className="appContent">
+            <Mapa/>
+            <Switch>
+              <Route path="/" component={Home} exact/>
+              <Route path="/login" component={Login} exact/>
+              <Route path="/zonas" component={Zonas} />
+              <Route path="/zonas/:id" component={Zona} exact/>
+              <Route path="/eventos" component={Eventos}/>
+              <Route path="/eventos/:id" component={Evento} exact/>
+              <Route path="/aportes" component={Aportes}/>
+              <Route path="/aportes/:id" component={Aporte} exact/>
+              <Route path="/personas" component={Personas} exact/>
+              <Route path="/personas/:id" component={Personas} exact/>
+              <Route path="/estructuras" component={Estructuras} />
+              <Route path="/estructuras/:id" component={Estructura} exact/>
+              <Route path="/tipos-de-evento" component={TiposDeEvento}/>
+              <Route path="/tipos-de-evento/:id" component={TipoDeEvento} exact/>
+              <Route path="/tipos-de-aporte" component={TiposDeAporte}/>
+              <Route path="/tipos-de-aporte/:id" component={TipoDeAporte} exact/>
+              <Route path="/roles-de-personas" component={RolesDePersonas} />
+              <Route path="/roles-de-personas/:id" component={RolDePersona} exact/>
+              <Route path="/tipos-de-estructura" component={TiposDeEstructura} />
+              <Route path="/tipos-de-estructura/:id" component={TipoDeEstructura} exact/>
+            </Switch>
+            <Route path="/:elemento/agregar" component={PopUpAdd}/>
+          </div>
+          <Footer/>
+        </Router>
+      </div>
+      </RemoveModeProvider>
+    </EditModeProvider>
   );
 }
 
