@@ -1,7 +1,6 @@
 import React,{useEffect, useState} from 'react';
 import apiService from '../config/apiService';
 import { useHistory } from "react-router-dom";
-import Zona from '../views/zona';
 import DATEOPTIONS from '../config/dateOptions';
 
 

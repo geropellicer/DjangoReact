@@ -29,6 +29,7 @@ import Aporte from './views/aporte';
 import Mapa from './components/mapa';
 import PopUpAdd from './components/popUpAdd';
 import PopUpRemove from './components/popUpRemove';
+import PopUpEdit from './components/popUpEdit';
 
 import {EditModeProvider} from './components/editModeContext'; 
 import {RemoveModeProvider} from './components/removeModeContext'; 
@@ -67,6 +68,7 @@ function App() {
             </Switch>
             <Route path="/:elemento/agregar" component={PopUpAdd}/>
             <Route path="/:elemento/:id/eliminar" component={PopUpRemove}/>
+            <Route path="/:elemento/:id/editar" component={PopUpEdit}/>
           </div>
           <Footer/>
         </Router>
