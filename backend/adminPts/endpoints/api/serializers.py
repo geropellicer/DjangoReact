@@ -166,6 +166,23 @@ class eventoSerializer(serializers.ModelSerializer):
         
         return nuevoEvento
 
+    def update(self, instance, validated_data):
+        nombre = validated_data.pop('nombre')
+        fecha = validated_data.pop('fecha')
+
+        instanceTipo = validated_data.pop('tipo')
+
+        tipoNombre = str(list(instanceTipo.items())[0][1])
+        
+        tInstance = tipoEvento.objects.get(nombre=tipoNombre)
+        
+        instance.fecha = fecha
+        instance.nombre = nombre
+        instance.tipo = tInstance
+        instance.save()
+        return instance
+        
+
 
 
 class aporteResumenSerializer(serializers.ModelSerializer):
@@ -208,6 +225,27 @@ class aporteSerializer(serializers.ModelSerializer):
         nuevoAporte = aporte.objects.create(monto=monto, fecha=fecha, persona=pInstance, tipoAporte=taInstance)
         
         return nuevoAporte
+
+    def update(self, instance, validated_data):
+        print(instance)
+        print(validated_data)
+        monto = validated_data.pop('monto')
+        fecha = validated_data.pop('fecha')
+        instancePersona = validated_data.pop('persona')
+        instanceTipo = validated_data.pop('tipoAporte')
+
+        personaNombre = str(list(instancePersona.items())[0][1])
+        tipoNombre = str(list(instanceTipo.items())[0][1])
+
+        pInstance = persona.objects.get(nombre=personaNombre)
+        taInstance = tipoAporte.objects.get(nombre=tipoNombre)
+        
+        instance.fecha = fecha
+        instance.monto = monto
+        instance.persona = pInstance
+        instance.tipoAporte = taInstance
+        instance.save() 
+        return instance
 
 
 class rolPersonaSerializer(serializers.ModelSerializer):

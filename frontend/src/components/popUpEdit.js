@@ -56,9 +56,66 @@ const PopUpEdit = (props) => {
             el.nombre = nombre;
             el.descripcion = descripcion; 
         }
-        console.log(el);
+        if(elemento === 'tipos-de-aporte' || 
+        elemento === 'tipos-de-evento' ||
+        elemento === 'tipos-de-estructura' ||
+        elemento === 'zonas'){
+            el.nombre = nombre; 
+        }
+        if(elemento === 'aportes') {
+            el.monto = aporteMonto;
+            el.fecha = fechaAporte;
+            el.persona = {nombre: personaAporte.split('|')[0], rol: parseInt(personaAporte.split('|')[1])};
+            el.tipoAporte = {nombre: tipoAporte};
+        }
+        if(elemento === 'eventos'){
+            el.nombre = eventoNombre;
+            el.fecha = fechaEvento;
+            el.tipo = {nombre: tipoEvento};
+        }
         return el;
     };
+
+
+    const [personaAporte, setPersonaAporte] = useState('');
+    const [tipoAporte, setTipoAporte] = useState('');
+    const [aporteMonto, setAporteMonto] = useState('');
+    const [fechaAporte, setFechaAporte] = useState('');
+
+    const updatePersonaAporte = (e) => {
+        setPersonaAporte(e.target.value);
+    }
+    const updateTipoAporte = (e) => {
+        setTipoAporte(e.target.value);
+    }
+    const updateAporteMonto = (e) => {
+        setAporteMonto(e.target.value);
+    }
+    const updateFechaAporte = (e) => {
+        setFechaAporte(e.target.value);
+    }
+
+
+    const [personas, setPersonas] = useState();
+    const [tiposAporte, setTiposAporte] = useState();
+
+
+
+    const [eventoNombre, setEventoNombre] = useState('');
+    const [fechaEvento, setFechaEvento] = useState('');
+    const [tipoEvento, setTipoEvento] = useState('');
+
+    const updateEventoNombre = (e) => {
+        setEventoNombre(e.target.value);
+    }
+    const updateFechaEvento = (e) => {
+        setFechaEvento(e.target.value);
+    }
+    const updateTipoEvento = (e) => {
+        setTipoEvento(e.target.value);
+    }
+
+    const [tiposDeEvento, setTiposDeEvento] = useState(); 
 
     useEffect(  
         () => {
@@ -69,8 +126,56 @@ const PopUpEdit = (props) => {
                     setNombre(response.nombre);
                     setDescripcion(response.descripcion);
                 }
+                if(elemento === 'tipos-de-aporte' || 
+                elemento === 'tipos-de-evento' ||
+                elemento === 'tipos-de-estructura' ||
+                elemento === 'zonas'){
+                    setNombre(response.nombre);
+                }
+                if(elemento === 'aportes'){
+                    setAporteMonto(response.monto);
+                    setPersonaAporte(response.persona.nombre + '|' + response.persona.rol);
+                    setTipoAporte(response.tipoAporte.nombre);
+                    var date = new Date(response.fecha);
+                    var dateString = new Date(date.getTime() - (date.getTimezoneOffset() * 60000 ))
+                    .toISOString()
+                    .split("T")[0];
+
+                    setFechaAporte(dateString);
+                }
+                if(elemento === 'eventos'){
+                    setEventoNombre(response.nombre);
+                    var date = new Date(response.fecha);
+                    var dateString = new Date(date.getTime() - (date.getTimezoneOffset() * 60000 ))
+                    .toISOString()
+                    .split("T")[0];
+
+                    setFechaEvento(dateString);
+                    setTipoEvento(response.tipo.nombre);
+                }
             }
+            const getPersonas = async () => {
+                const response = await apiService('personas', 'GET');
+                setPersonas(response);
+            }
+            const getTiposDeAporte = async () => {
+                const response = await apiService('tipos-de-aporte', 'GET');
+                setTiposAporte(response);
+            }
+            const getTiposDeEvento = async () => {
+                const response = await apiService('tipos-de-evento', 'GET');
+                setTiposDeEvento(response);
+            }
+
+
             getElemento();
+            if(elemento === 'aportes'){
+                getPersonas();
+                getTiposDeAporte();
+            }
+            if(elemento === 'eventos'){
+                getTiposDeEvento();
+            }
         }
     , []);
 
@@ -81,13 +186,14 @@ const PopUpEdit = (props) => {
                     <h2>Editar elemento:</h2>
                     { 
                         elemento === "zonas" ||
-                        elemento === "estructuras" ||
                         elemento === "tipos-de-estructura" ||
                         elemento === "tipos-de-evento" ||
                         elemento === "tipos-de-aporte"  ? (
                             <div>
                                 { elementoEditar ? (
-                                        <h2>{elementoEditar.nombre}</h2>
+                                    <div>
+                                        <input type="text" autoFocus onChange={updateNombre} value={nombre}/>
+                                    </div>
                                     ) : null}
                             </div>
                         ) : null
@@ -97,7 +203,7 @@ const PopUpEdit = (props) => {
                             <div>
                                 { elementoEditar ? (
                                     <div>
-                                        <input type="text" onChange={updateNombre} value={nombre}/>
+                                        <input type="text" autoFocus onChange={updateNombre} value={nombre}/>
                                         <input type="text" onChange={updateDescripcion} value={descripcion}/>
                                     </div>
                                     ) : null}
@@ -109,9 +215,17 @@ const PopUpEdit = (props) => {
                             <div>
                                 { elementoEditar ? (
                                     <div>
-                                        <h3>{elementoEditar.nombre}</h3>
-                                        <h5>Fecha: {new Date(elementoEditar.fecha).toLocaleDateString('es-AR', DATEOPTIONS)}</h5>
-                                        <h5>Tipo: {elementoEditar.tipo.nombre}</h5>
+                                        <input type="text" name="eventoNombre" onChange={updateEventoNombre} value={eventoNombre} />
+                                        <select name="tipoEvento" value={tipoEvento} onChange={updateTipoEvento}>
+                                            { tiposDeEvento ?
+                                                tiposDeEvento.map(
+                                                    tipo => (
+                                                        <option key={tipo.id} value={tipo.nombre}>{tipo .nombre}</option>
+                                                    )
+                                                ) : null
+                                            }
+                                        </select>
+                                        <input type="date" name="fechaEvento" onChange={updateFechaEvento} value={fechaEvento} />
                                     </div>
                                     ) : null }
                             </div>
@@ -122,12 +236,28 @@ const PopUpEdit = (props) => {
                             <div>
                                 { elementoEditar ? (
                                     <div>
-                                        <h3>{ elementoEditar.tipoAporte.nombre }</h3>
-                                        <h4>
-                                            &nbsp;de {elementoEditar.persona.nombre}
-                                            &nbsp;de {elementoEditar.fecha != null && elementoEditar.fecha != '' ? (new Date(elementoEditar.fecha).toLocaleDateString('es-AR', DATEOPTIONS)) : ('<sin fecha>')}
-                                        </h4>
-                                        <h3>de ${elementoEditar.monto}</h3>
+                                        <input type="number" name="aporteMonto" autoFocus onChange={updateAporteMonto} value={aporteMonto} />
+                                        <select name="personaAporte" value={personaAporte} onChange={updatePersonaAporte}>
+                                            <option defaultValue value="0">Seleccione...</option>
+                                            { personas ?
+                                                personas.map(
+                                                    persona => (
+                                                    <option key={persona.id} value={persona.nombre + '|' + persona.rol.id}>{persona.nombre} de {persona.estructura.nombre}</option>
+                                                    )
+                                                ) : null
+                                            }
+                                        </select>
+                                        <input type="date" name="fechaAporte" onChange={updateFechaAporte} value={fechaAporte} />
+                                        <select name="tipoAporte" value={tipoAporte} onChange={updateTipoAporte}>
+                                            <option defaultValue value="0">Seleccione...</option>
+                                            { tiposAporte ?
+                                                tiposAporte.map(
+                                                    tipo => (
+                                                        <option key={tipo.id} value={tipo.nombre}>{tipo.nombre}</option>
+                                                    )
+                                                ) : null
+                                            }
+                                        </select>
                                     </div>
                                     ) : null }
                             </div>
