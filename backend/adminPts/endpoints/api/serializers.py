@@ -74,6 +74,24 @@ class estructuraSerializer(serializers.ModelSerializer):
         
         return nuevaEstructura
 
+    def update(self, instance, validated_data):
+        instanceZona = validated_data.pop('zona')
+        instanceTipo = validated_data.pop('tipo')
+
+        zonaNombre = str(list(instanceZona.items())[0][1])
+        tipoNombre = str(list(instanceTipo.items())[0][1])
+
+        estructuraNombre = validated_data.pop('nombre')
+
+        zInstance = zona.objects.get(nombre=zonaNombre)
+        tInstance = tipoEstructura.objects.get(nombre=tipoNombre)
+
+        instance.nombre = estructuraNombre
+        instance.zona = zInstance
+        instance.tipo = tInstance
+        instance.save()
+        return instance
+
 
 class zonaSerializer(serializers.ModelSerializer):
     estructuras = estructuraSerializer(many=True, read_only=True)

@@ -73,6 +73,11 @@ const PopUpEdit = (props) => {
             el.fecha = fechaEvento;
             el.tipo = {nombre: tipoEvento};
         }
+        if(elemento === 'estructuras'){
+            el.nombre = estructuraNombre;
+            el.tipo = {nombre: estructuraTipo};
+            el.zona = {nombre: estructuraZona};
+        }
         return el;
     };
 
@@ -117,6 +122,24 @@ const PopUpEdit = (props) => {
 
     const [tiposDeEvento, setTiposDeEvento] = useState(); 
 
+
+    const [estructuraNombre, setEstructuraNombre] = useState('');
+    const [estructuraTipo, setEstructuraTipo] = useState('');
+    const [estructuraZona, setEstructuraZona] = useState('');
+
+    const updateEstructuraNombre = (e) => {
+        setEstructuraNombre(e.target.value);
+    };
+    const updateEstructuraTipo = (e) => {
+        setEstructuraTipo(e.target.value);
+    };
+    const updateEstructuraZona = (e) => {
+        setEstructuraZona(e.target.value);
+    };
+
+    const [tiposEstructura, setTiposDeEstructura] = useState();
+    const [zonas, setZonas] = useState();
+
     useEffect(  
         () => {
             const getElemento = async () => {
@@ -153,6 +176,11 @@ const PopUpEdit = (props) => {
                     setFechaEvento(dateString);
                     setTipoEvento(response.tipo.nombre);
                 }
+                if(elemento === 'estructuras'){
+                    setEstructuraNombre(response.nombre);
+                    setEstructuraZona(response.zona.nombre);
+                    setEstructuraTipo(response.tipo.nombre);
+                }
             }
             const getPersonas = async () => {
                 const response = await apiService('personas', 'GET');
@@ -166,6 +194,14 @@ const PopUpEdit = (props) => {
                 const response = await apiService('tipos-de-evento', 'GET');
                 setTiposDeEvento(response);
             }
+            const getTiposDeEstructura = async () => {
+                const response = await apiService('tipos-de-estructura', 'GET');
+                setTiposDeEstructura(response);
+            }
+            const getZonas = async () => {
+                const response = await apiService('zonas', 'GET');
+                setZonas(response);
+            }
 
 
             getElemento();
@@ -175,6 +211,10 @@ const PopUpEdit = (props) => {
             }
             if(elemento === 'eventos'){
                 getTiposDeEvento();
+            }
+            if(elemento === 'estructuras'){
+                getTiposDeEstructura();
+                getZonas();
             }
         }
     , []);
@@ -260,6 +300,38 @@ const PopUpEdit = (props) => {
                                         </select>
                                     </div>
                                     ) : null }
+                            </div>
+                        ) : null
+                    }
+                    { 
+                        elemento === "estructuras" ? (
+                            <div>
+                                { elementoEditar ? (
+                                    <div>
+                                        <h2>Agregar nueva estructura</h2>
+                                        <input type="text" name="estructuraNombre" onChange={updateEstructuraNombre} value={estructuraNombre} />
+                                        <select name="zona" value={estructuraZona} onChange={updateEstructuraZona}>
+                                            <option defaultValue value="0">Seleccione...</option>
+                                            { zonas ?
+                                                zonas.map(
+                                                    zona => (
+                                                        <option key={zona.id} value={zona.nombre}>{zona.nombre}</option>
+                                                    )
+                                                ) : null
+                                            }
+                                        </select>
+                                        <select name="tipoEstructura" value={estructuraTipo} onChange={updateEstructuraTipo}>
+                                            <option defaultValue value="0">Seleccione...</option>
+                                            { tiposEstructura ?
+                                                tiposEstructura.map(
+                                                    tipo => (
+                                                        <option key={tipo.id} value={tipo.nombre}>{tipo.nombre}</option>
+                                                    )
+                                                ) : null
+                                            }
+                                        </select>
+                                    </div>
+                                ) : null }
                             </div>
                         ) : null
                     }
