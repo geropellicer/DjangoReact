@@ -15,7 +15,7 @@ const initialState = {
 }
 
 const authReducer = (state = initialState, action) => {
-    switch(state){
+    switch(action.type){
         case USER_LOADING:
             return{
                 ...state,
@@ -38,9 +38,8 @@ const authReducer = (state = initialState, action) => {
                 isLoading: false
             }
         case LOGOUT:
-            console.log('sucediendo');
-            localStorage.removeItem('authToken');
             apiService('rest-auth/logout/', 'POST');
+            localStorage.removeItem('authToken');
             return{
                 ...state,
                 token: null,
