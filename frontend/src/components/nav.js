@@ -1,16 +1,24 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import TopMenu from './topMenu';
-
+import {useSelector} from 'react-redux';
+ 
 const Nav = () => {
+
+    const loggedIn = useSelector(state => state.auth.isAuthenticated) 
+
     return(
         <header className="mainHeader">
             <nav>
-                <Link to='./'>
+                {
+                    loggedIn ?
+                    <Link to='./'>
                     <button className="back">
                        <ion-icon name="arrow-round-back"></ion-icon> Atrás
                     </button>
                </Link>
+                    : null
+                }
             </nav>
 
 
@@ -19,7 +27,11 @@ const Nav = () => {
             </Link>
 
             <nav>
-               <TopMenu/>
+                {
+                loggedIn ?
+                <TopMenu/>
+                : null
+                }
             </nav>
         </header>
     );
