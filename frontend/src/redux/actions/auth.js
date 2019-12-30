@@ -1,6 +1,6 @@
-import BASEURL from './baseurl';
+import BASEURL from '../../config/baseurl';
+import {CSRF_TOKEN} from '../../config/csrf_token';
 import {returnErrors, userLoading, userLoaded, authError} from './index';
-import {useDispatch, useSelector} from 'react-redux';
 
 import {
     USER_LOADED,
@@ -8,13 +8,9 @@ import {
     AUTH_ERROR
 } from './types';   
 
-export const loadUser = () => {
-    const dispatch = useDispatch();
+export const loadUser = (dispatch, token) => {
     //userLoading
     dispatch(userLoading());
-
-    //get token from state
-    const token = useSelector(state => state.auth.token);
 
     //load user
     if(token){
@@ -27,9 +23,12 @@ export const loadUser = () => {
             }
         };
         
-        fetch(`${BASEURL}'user'`, config)
+        fetch(`${BASEURL}user`, config)
         .then(res => {
-            dispatch(userLoaded(res.data));
+            return res.json();
+        })
+        .then( (data) => {
+            dispatch(userLoaded(data));
         })
         .catch(error => {
             dispatch(returnErrors(error.response.data, error.response.status));
