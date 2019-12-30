@@ -5,7 +5,7 @@ const handleResponse = (response) => {
   return response.json();
 }
     
-const apiService = (endpoint, method, data) => {
+const apiService = (endpoint, method, data, conToken = true) => {
   // D.R.Y. code to make HTTP requests to the REST API backend using fetch
   const config = {
     method: method || "GET",
@@ -13,9 +13,11 @@ const apiService = (endpoint, method, data) => {
     headers: {
       'Content-Type': 'application/json',
       'X-CSRFTOKEN': CSRF_TOKEN,
-      'Authorization': `Token ${window.localStorage.getItem("authToken")}`,
     }
   };
+  if(conToken){
+    config.headers.Authorization = `Token ${window.localStorage.getItem("authToken")}`;
+  }
   return fetch(`${BASEURL}${endpoint}`, config)
         .then(handleResponse)
         .catch(error => {console.log(error); return error})
