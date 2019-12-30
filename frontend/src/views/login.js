@@ -1,14 +1,16 @@
 import React,{useState} from 'react';
 import apiService from '../config/apiService';
 import { Redirect } from 'react-router-dom'
+import {useSelector} from 'react-redux';
 
 
 const Login = () => {
     const ENDPOINT = 'rest-auth/login/';
 
+    const loggedIn = useSelector(state => state.auth.isAuthenticated);
+
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
-    const [loggedIn, setLoggedIn] = useState(false);
 
     const updatePassword = e => {
         setPassword(e.target.value);
@@ -20,14 +22,13 @@ const Login = () => {
 
     const login = async (e) => {
         e.preventDefault();
-        const response = await apiService(ENDPOINT, 'POST', {'username': username, 'password': password});
+        const response = await apiService(ENDPOINT, 'POST', {'username': username, 'password': password}, false);
         window.localStorage.setItem("authToken", response.key);
-        setLoggedIn(true);
     };
 
     return(
         <div className="container verticalAlign columna">
-            { loggedIn ? <Redirect to='/'/> : null}
+        { loggedIn ? <Redirect to='/'/> : 
             <div className="row">
                 <div className="one column"></div>
                 <div className="ten columns">
@@ -40,7 +41,7 @@ const Login = () => {
                 </div>
                 <div className="one column"></div>
             </div>
-        
+        }
         </div>
     )
 }
