@@ -1,7 +1,13 @@
 from rest_framework import serializers
 from endpoints.models import (rolPersona, tipoEvento, evento, persona, relacion,
                             tipoAporte, aporte, tipoEstructura, zona, estructura)
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'email')
 
 
 class tipoEventoResumenSerializer(serializers.ModelSerializer):

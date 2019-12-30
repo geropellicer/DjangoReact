@@ -1,5 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
+from .api import UserAPI
 from endpoints.api.views import (rolPersonaViewSet, tipoEventoViewSet, eventoViewSet,
                             personaViewSet, relacionViewSet, tipoAporteViewSet,
                             aporteViewSet, tipoEstructuraViewSet,
@@ -20,4 +21,5 @@ router.register(r"aportes", aporteViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('user', UserAPI.as_view()),
 ]
