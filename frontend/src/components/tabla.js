@@ -77,7 +77,7 @@ const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase, alineac
                                     }
                                     {
                                         editMode.mode ? (
-                                            <td className="columna">
+                                            <td>
                                                 <Link to={`${linkBase}/editar/${fila[0]['valor']}`}>
                                                     <button><ion-icon name="create"></ion-icon></button>
                                                 </Link>
@@ -86,7 +86,7 @@ const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase, alineac
                                     }
                                     {
                                         removeMode.mode ? (
-                                            <td className="columna">
+                                            <td>
                                                 <Link to={`${linkBase}/eliminar/${fila[0]['valor']}`}>
                                                     <button><ion-icon name="trash"></ion-icon></button>
                                                 </Link>

@@ -366,12 +366,13 @@ header.secondary span{
   transform: scale(1,1);
 }
 table button{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   margin: 0;
   padding: 0 15px;
+  line-height: 100%;
+  margin-right: 1em !important;
+}
+table thead th:last-child{
+  padding-right: 1em !important;
 }
 table button ion-icon{
   font-size: 1.5em;
