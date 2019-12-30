@@ -61,9 +61,10 @@ export const userLoading = () => {
     }
 }
 
-export const userLoaded = () => {
+export const userLoaded = (userData) => {
     return {
-        type: USER_LOADED
+        type: USER_LOADED,
+        payload: userData
     }
 }
 
