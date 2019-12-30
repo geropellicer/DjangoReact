@@ -277,7 +277,7 @@ table .textLeft{
 header.secondary{
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: flex-start;
     background: #fff;
     padding: 1em;color: #333;
     align-items: center;

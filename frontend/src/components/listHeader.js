@@ -1,20 +1,19 @@
-import React,{useContext} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
-import {EditModeContext} from './editModeContext';
-import {RemoveModeContext} from './removeModeContext';
+import {deactivateEdit, toggleEdit, deactivateRemove, toggleRemove} from '../redux/actions';
+import {useDispatch} from 'react-redux';
 
 const ListHeader = ({titulo, url}) => {
 
-    const [editMode, setEditMode] = useContext(EditModeContext);
-    const [removeMode, setRemoveMode] = useContext(RemoveModeContext);
+    const dispatch = useDispatch();
 
     const updateEditMode = () => {
-        setEditMode({mode: !editMode.mode, object: {}});
-        setRemoveMode({mode: false, object: {}});
+        dispatch(toggleEdit());
+        dispatch(deactivateRemove());
     } 
     const updateRemoveMode = () => {
-        setRemoveMode({mode: !removeMode.mode, object: {}});
-        setEditMode({mode: false, object: {}});
+        dispatch(toggleRemove());
+        dispatch(deactivateEdit());
     }
 
     return(

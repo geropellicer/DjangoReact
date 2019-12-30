@@ -31,14 +31,9 @@ import PopUpAdd from './components/popUpAdd';
 import PopUpRemove from './components/popUpRemove';
 import PopUpEdit from './components/popUpEdit';
 
-import {EditModeProvider} from './components/editModeContext'; 
-import {RemoveModeProvider} from './components/removeModeContext'; 
-
 
 function App() {
   return (
-    <EditModeProvider>
-      <RemoveModeProvider>
       <div className="App container">
         <Router>
           <Nav/>
@@ -120,8 +115,6 @@ function App() {
           <Footer/>
         </Router>
       </div>
-      </RemoveModeProvider>
-    </EditModeProvider>
   );
 }
 

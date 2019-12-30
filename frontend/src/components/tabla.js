@@ -1,13 +1,12 @@
-import React,{useEffect, useState, useContext} from 'react';
+import React,{useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import DATEOPTIONS from '../config/dateOptions';
-import {EditModeContext} from './editModeContext';
-import {RemoveModeContext} from './removeModeContext';
+import {useSelector} from 'react-redux';
 
 const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase, alineacionesColumnas}) => {
 
-    const [editMode, setEditMode] = useContext(EditModeContext);
-    const [removeMode, setRemoveMode] = useContext(RemoveModeContext);
+    const editMode = useSelector(state => state.editMode);
+    const removeMode = useSelector(state => state.removeMode);
 
     useEffect(() => {
         prepararFilas();
@@ -51,10 +50,10 @@ const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase, alineac
                         )
                     }
                     {
-                        editMode.mode ? (<th className="centerTh"><ion-icon name="create"></ion-icon></th>) : null
+                        editMode ? (<th className="centerTh"><ion-icon name="create"></ion-icon></th>) : null
                     }
                     {
-                        removeMode.mode ? (<th className="centerTh"><ion-icon name="trash"></ion-icon></th>) : null
+                        removeMode ? (<th className="centerTh"><ion-icon name="trash"></ion-icon></th>) : null
                     }
                     </tr>
                 </thead>
@@ -76,7 +75,7 @@ const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase, alineac
                                         )
                                     }
                                     {
-                                        editMode.mode ? (
+                                        editMode ? (
                                             <td>
                                                 <Link to={`${linkBase}/editar/${fila[0]['valor']}`}>
                                                     <button><ion-icon name="create"></ion-icon></button>
@@ -85,7 +84,7 @@ const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase, alineac
                                             ) : null
                                     }
                                     {
-                                        removeMode.mode ? (
+                                        removeMode ? (
                                             <td>
                                                 <Link to={`${linkBase}/eliminar/${fila[0]['valor']}`}>
                                                     <button><ion-icon name="trash"></ion-icon></button>
