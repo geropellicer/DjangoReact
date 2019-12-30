@@ -22,7 +22,9 @@ header.mainHeader, footer.mainFooter{
   box-shadow: 0 2px 10px 1px rgba(0,0,0,.15);
   z-index: 10;
 }
-
+header.mainHeader > a{
+  text-align: center;
+}
 header.mainHeader{
   height: 8 0px;
 }
@@ -109,10 +111,6 @@ footer h6 {
 
 .homeMenu li span {
   font-size: 5em;
-}
-
-.homeMenu a:last-child{
-  margin-right: 0;
 }
 
 .doubleCenter {
@@ -219,6 +217,7 @@ table .textLeft{
 
 .topMenu{
   position: relative;
+  margin-left: 2em;
 }
 .topMenuList {
   display: none;
