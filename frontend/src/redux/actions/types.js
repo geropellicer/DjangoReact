@@ -1,0 +1,11 @@
+export const GET_ERRORS = 'GET_ERRORS';
+export const ACTIVATE_EDIT = 'ACTIVATE_EDIT';
+export const DEACTIVATE_EDIT = 'DEACTIVATE_EDIT';
+export const TOGGLE_EDIT = 'TOGGLE_EDIT';
+export const ACTIVATE_REMOVE = 'ACTIVATE_REMOVE';
+export const DEACTIVATE_REMOVE = 'DEACTIVATE_REMOVE';
+export const TOGGLE_REMOVE = 'TOGGLE_REMOVE';
+export const USER_LOADING = 'USER_LOADING';
+export const USER_LOADED = 'USER_LOADED';
+export const AUTH_ERROR = 'AUTH_ERROR';
+export const LOGOUT = 'LOGOUT';
