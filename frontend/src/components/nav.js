@@ -5,7 +5,8 @@ import {useSelector} from 'react-redux';
  
 const Nav = () => {
 
-    const loggedIn = useSelector(state => state.auth.isAuthenticated) 
+    const loggedIn = useSelector(state => state.auth.isAuthenticated);
+    const user = useSelector(state => state.auth.user); 
 
     return(
         <header className="mainHeader">
@@ -23,10 +24,15 @@ const Nav = () => {
 
 
             <Link to="/">
-                <h4>ADMIN PTS</h4>
+                <h5>ADMIN PTS</h5>
             </Link>
 
-            <nav>
+            <nav className="fila">
+                {
+                    user ?
+                    <span>Bienvenidx {user.username}</span>
+                    : null
+                }
                 {
                 loggedIn ?
                 <TopMenu/>

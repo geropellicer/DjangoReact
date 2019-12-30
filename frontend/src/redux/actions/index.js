@@ -9,7 +9,9 @@ import {
     USER_LOADED,
     USER_LOADING,
     AUTH_ERROR,
-    LOGOUT
+    LOGOUT,
+    LOGIN_SUCCESS,
+    LOGIN_ERROR
 } from './types';
 
 export const returnErrors = (msg, status) => {
@@ -77,5 +79,18 @@ export const authError = () => {
 export const logout = () => {
     return {
         type: LOGOUT
+    }
+}
+
+export const loginSuccess = (token) => {
+    return {
+        type: LOGIN_SUCCESS,
+        payload: token
+    }
+}
+
+export const loginError = () => {
+    return {
+        type: LOGIN_ERROR,
     }
 }

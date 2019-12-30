@@ -1,11 +1,11 @@
 import React,{useState} from 'react';
-import apiService from '../config/apiService';
 import { Redirect } from 'react-router-dom'
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import { loginUser } from '../redux/actions/auth';
 
 
 const Login = () => {
-    const ENDPOINT = 'rest-auth/login/';
+    const dispatch = useDispatch();
 
     const loggedIn = useSelector(state => state.auth.isAuthenticated);
 
@@ -22,8 +22,7 @@ const Login = () => {
 
     const login = async (e) => {
         e.preventDefault();
-        const response = await apiService(ENDPOINT, 'POST', {'username': username, 'password': password}, false);
-        window.localStorage.setItem("authToken", response.key);
+        await loginUser(dispatch, username, password);
     };
 
     return(

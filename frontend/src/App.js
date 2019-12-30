@@ -41,10 +41,12 @@ function App() {
   const dispatch = useDispatch();
   const token = useSelector(state => state.auth.token);
 
+  const pendingLoad = useSelector(state => state.auth.pendingLoad);
+
   useEffect(
     () => {
       loadUser(dispatch, token);
-    }
+    }, [pendingLoad]
   );
 
   return (
