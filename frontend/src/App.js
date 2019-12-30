@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -33,8 +33,20 @@ import PopUpEdit from './components/popUpEdit';
 
 import PrivateRoute from './components/PrivateRoute';
 
+import {loadUser} from './redux/actions/auth';
+import {useDispatch, useSelector} from 'react-redux';
 
 function App() {
+
+  const dispatch = useDispatch();
+  const token = useSelector(state => state.auth.token);
+
+  useEffect(
+    () => {
+      loadUser(dispatch, token);
+    }
+  );
+
   return (
       <div className="App container">
         <Router>
