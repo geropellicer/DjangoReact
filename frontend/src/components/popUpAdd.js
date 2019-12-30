@@ -321,7 +321,7 @@ const PopUpAdd = (props) => {
                 getTiposDeEvento();
             }
         }
-    , []);
+    , [elemento]);
 
     return  (
         <div className="oscuro" name="oscuro" onClick={goBack}>
@@ -395,7 +395,7 @@ const PopUpAdd = (props) => {
                                 {
                                     tiposDeEvento.map(
                                         tipo => (
-                                            <option key={tipo.id} value={tipo.nombre}>{tipo .nombre}</option>
+                                            <option key={tipo.id} value={tipo.nombre}>{tipo.nombre}</option>
                                         )
                                     )
                                 }

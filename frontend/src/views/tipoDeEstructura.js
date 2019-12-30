@@ -1,7 +1,6 @@
 import React,{useEffect, useState} from 'react';
 import apiService from '../config/apiService';
 import Tabla from '../components/tabla';
-import DATEOPTIONS from '../config/dateOptions';
 
 const TipoDeEstructura = (props) => {
 
@@ -23,7 +22,7 @@ const TipoDeEstructura = (props) => {
             setData(response);
         }
         getData();
-    }, [])
+    }, [ENDPOINT])
     
 
     return(

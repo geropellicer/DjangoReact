@@ -31,7 +31,7 @@ footer.mainFooter{
 }
 
 footer nav{
-  width: 375wpx;
+  width: 375px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

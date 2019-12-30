@@ -1,7 +1,6 @@
 import React,{useEffect, useState} from 'react';
 import apiService from '../config/apiService';
 import Tabla from '../components/tabla';
-import DATEOPTIONS from '../config/dateOptions';
 
 const TipoDeAporte = (props) => {
 
@@ -23,7 +22,7 @@ const TipoDeAporte = (props) => {
             setData(response);
         }
         getData();
-    }, [])
+    }, [ENDPOINT])
     
 
     return(

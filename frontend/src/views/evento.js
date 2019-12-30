@@ -23,7 +23,7 @@ const Evento = (props) => {
             setData(response);
         }
         getData();
-    }, [])
+    }, [ENDPOINT])
     
 
     return(

@@ -4,12 +4,12 @@ import {Link, useParams} from 'react-router-dom';
 const ItemHeader = ({titulo, url}) => {
 
     let { slug, elemento, id} = useParams()
-
+    
     useEffect(() => {
         console.log("slug: " + slug);
         console.log("elemento: " + elemento);
         console.log("id: " + id);
-    }, []);
+    }, [slug, elemento, id]);
 
     return(
         <header className="sectionHeader fila">

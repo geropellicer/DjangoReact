@@ -1,7 +1,5 @@
 import React,{useEffect, useState} from 'react';
 import apiService from '../config/apiService';
-import Tabla from '../components/tabla';
-import DATEOPTIONS from '../config/dateOptions';
 
 const Aporte = (props) => {
 
@@ -17,7 +15,7 @@ const Aporte = (props) => {
             setData(response);
         }
         getData();
-    }, [])
+    }, [ENDPOINT])
     
 
     return(

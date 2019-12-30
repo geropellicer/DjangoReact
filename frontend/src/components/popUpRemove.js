@@ -48,7 +48,7 @@ const PopUpRemove = (props) => {
             }
             getElemento();
         }
-    , []);
+    , [elemento, id]);
 
     return  (
         <div className="oscuro" name="oscuro" onClick={goBack}>
@@ -90,7 +90,7 @@ const PopUpRemove = (props) => {
                                         <h3>{ elementoEliminar.tipoAporte.nombre }</h3>
                                         <h4>
                                             &nbsp;de {elementoEliminar.persona.nombre}
-                                            &nbsp;de {elementoEliminar.fecha != null && elementoEliminar.fecha != '' ? (new Date(elementoEliminar.fecha).toLocaleDateString('es-AR', DATEOPTIONS)) : ('<sin fecha>')}
+                                            &nbsp;de {elementoEliminar.fecha !== null && elementoEliminar.fecha !== '' ? (new Date(elementoEliminar.fecha).toLocaleDateString('es-AR', DATEOPTIONS)) : ('<sin fecha>')}
                                         </h4>
                                         <h3>de ${elementoEliminar.monto}</h3>
                                     </div>

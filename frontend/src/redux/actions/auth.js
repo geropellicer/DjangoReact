@@ -2,12 +2,6 @@ import BASEURL from '../../config/baseurl';
 import {CSRF_TOKEN} from '../../config/csrf_token';
 import {returnErrors, userLoading, userLoaded, authError} from './index';
 
-import {
-    USER_LOADED,
-    USER_LOADING,
-    AUTH_ERROR
-} from './types';   
-
 export const loadUser = (dispatch, token) => {
     //userLoading
     dispatch(userLoading());

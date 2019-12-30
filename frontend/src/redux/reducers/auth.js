@@ -1,6 +1,4 @@
-import {userLoading, userLoaded, authError} from '../actions'
 import {
-    GET_ERRORS,
     USER_LOADED,
     USER_LOADING,
     AUTH_ERROR,

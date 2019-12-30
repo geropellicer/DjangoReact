@@ -9,31 +9,33 @@ const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase, alineac
     const removeMode = useSelector(state => state.removeMode);
 
     useEffect(() => {
+        const prepararFilas = () => {
+            for(let i=0; i < data.length; i++){
+                let nuevaFila = [];
+                for(let j=0; j < refColumnas.length; j++){
+                    let valor = {};
+                    if(columnas[j] !== 'Fecha' && columnas[j] !== 'Monto'){
+                        valor = {'key': j, 'valor': data[i][refColumnas[j]]};
+                    } else if(columnas[j] === 'Fecha') {
+                        valor = {'key': j, 'valor': new Date(data[i][refColumnas[j]])};
+                    } else if(columnas[j] === 'Monto') {
+                        valor = {'key': j, 'valor': '$' + data[i][refColumnas[j]].toString()};
+                    }
+                    if(refPropsColumnas[j] !== '') {
+                        valor['valor'] = valor['valor'][refPropsColumnas[j]];
+                    };
+                    nuevaFila.push(valor);          
+                }
+                setFilas(prevFilas => [...prevFilas, nuevaFila] );
+            }
+        };
+        
         prepararFilas();
-    }, [data])
+    }, [data, columnas, refColumnas, refPropsColumnas])
 
     const [filas, setFilas] = useState([]);
 
-    const prepararFilas = () => {
-        for(let i=0; i < data.length; i++){
-            let nuevaFila = [];
-            for(let j=0; j < refColumnas.length; j++){
-                let valor = {};
-                if(columnas[j] !== 'Fecha' && columnas[j] !== 'Monto'){
-                    valor = {'key': j, 'valor': data[i][refColumnas[j]]};
-                } else if(columnas[j] === 'Fecha') {
-                    valor = {'key': j, 'valor': new Date(data[i][refColumnas[j]])};
-                } else if(columnas[j] === 'Monto') {
-                    valor = {'key': j, 'valor': '$' + data[i][refColumnas[j]].toString()};
-                }
-                if(refPropsColumnas[j] !== '') {
-                    valor['valor'] = valor['valor'][refPropsColumnas[j]];
-                };
-                nuevaFila.push(valor);          
-            }
-            setFilas(prevFilas => [...prevFilas, nuevaFila] );
-        }
-    };
+    
 
     
 

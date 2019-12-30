@@ -22,7 +22,7 @@ const Zona = (props) => {
             setData(response);
         }
         getData();
-    }, [])
+    }, [ENDPOINT])
     
 
     return(

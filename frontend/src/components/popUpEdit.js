@@ -6,7 +6,7 @@ import { useHistory, useParams } from "react-router-dom";
 const PopUpEdit = (props) => {
 
     //const { elemento, id } = props.match.params;
-    let { single, elemento, id } = useParams()
+    let { elemento, id } = useParams()
     
     const history = useHistory();
     
@@ -143,6 +143,8 @@ const PopUpEdit = (props) => {
     useEffect(  
         () => {
             const getElemento = async () => {
+                var date = new Date();
+                var dateString = '';
                 const response = await apiService(`${elemento}/${id}/`, 'GET');
                 setElementoEditar(response);
                 if(elemento === 'roles-de-personas'){
@@ -159,8 +161,8 @@ const PopUpEdit = (props) => {
                     setAporteMonto(response.monto);
                     setPersonaAporte(response.persona.nombre + '|' + response.persona.rol);
                     setTipoAporte(response.tipoAporte.nombre);
-                    var date = new Date(response.fecha);
-                    var dateString = new Date(date.getTime() - (date.getTimezoneOffset() * 60000 ))
+                    date = new Date(response.fecha);
+                    dateString = new Date(date.getTime() - (date.getTimezoneOffset() * 60000 ))
                     .toISOString()
                     .split("T")[0];
 
@@ -168,8 +170,8 @@ const PopUpEdit = (props) => {
                 }
                 if(elemento === 'eventos'){
                     setEventoNombre(response.nombre);
-                    var date = new Date(response.fecha);
-                    var dateString = new Date(date.getTime() - (date.getTimezoneOffset() * 60000 ))
+                    date = new Date(response.fecha);
+                    dateString = new Date(date.getTime() - (date.getTimezoneOffset() * 60000 ))
                     .toISOString()
                     .split("T")[0];
 
@@ -216,12 +218,8 @@ const PopUpEdit = (props) => {
                 getTiposDeEstructura();
                 getZonas();
             }
-
-            console.log("Elemento: " + elemento);
-            console.log("ID: " + id);
-            console.log("Single: " + single);
         }
-    , []);
+    , [elemento, id]);
 
     return  (
         <div className="oscuro" name="oscuro" onClick={goBack}>
@@ -264,7 +262,7 @@ const PopUpEdit = (props) => {
                                             { tiposDeEvento ?
                                                 tiposDeEvento.map(
                                                     tipo => (
-                                                        <option key={tipo.id} value={tipo.nombre}>{tipo .nombre}</option>
+                                                        <option key={tipo.id} value={tipo.nombre}>{tipo.nombre}</option>
                                                     )
                                                 ) : null
                                             }

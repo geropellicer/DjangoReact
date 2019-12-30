@@ -23,7 +23,7 @@ const Estructura = (props) => {
             setData(response);
         }
         getData();
-    }, [])
+    }, [ENDPOINT])
     
 
     return(
