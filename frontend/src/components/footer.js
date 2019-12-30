@@ -1,18 +1,27 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import {logout} from '../redux/actions';
 
 const Footer = () => {
+    const dispatch = useDispatch();
+    const closeSession = () => {
+        dispatch(logout());
+    }
+
     return(
         <footer className="mainFooter">
             <h5>ADMIN PTS</h5>
 
             <nav>
                 <Link to='/'>
-                    Volver a inicio
+                    <button>
+                        Volver a inicio
+                    </button>
                 </Link>
-                <Link to='/logout'>
+                <button onClick={closeSession}>
                     Cerrar sesión
-                </Link>
+                </button>
             </nav>
 
             <h6>Actualizado al 2020</h6>
