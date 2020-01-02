@@ -7,7 +7,7 @@ const Home = () => {
             <ul className="homeMenu container">
                 <Link className="card" to='/estructuras'>
                     <li> 
-                        <span><ion-icon name="home"></ion-icon></span>
+                        <span><ion-icon name="business"></ion-icon></span>
                         Equipos/Estructuras
                     </li>
                 </Link>

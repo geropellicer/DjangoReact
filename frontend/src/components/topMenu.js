@@ -28,12 +28,12 @@ const TopMenu = () => {
                     </li>
                     <li>
                         <Link onClick={click} to='/estructuras'>
-                            <ion-icon name="home"></ion-icon> Estructuras
+                            <ion-icon name="business"></ion-icon> Estructuras
                         </Link>
                     </li>
                     <li>
                         <Link onClick={click} to='/personas'>
-                        <ion-icon name="map"></ion-icon> Personas
+                        <ion-icon name="people"></ion-icon> Personas
                         </Link>
                     </li>
                     <li>
