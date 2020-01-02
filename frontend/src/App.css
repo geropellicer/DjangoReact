@@ -380,7 +380,9 @@ table button ion-icon{
   text-align: center;
 }
 
-
+.bold{
+  font-weight: bold;
+}
 
 
 

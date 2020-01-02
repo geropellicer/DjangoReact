@@ -35,6 +35,7 @@ import PrivateRoute from './components/PrivateRoute';
 
 import {loadUser} from './redux/actions/auth';
 import {useDispatch, useSelector} from 'react-redux';
+import NotFound from './components/notFound';
 
 function App() {
 
@@ -121,6 +122,7 @@ function App() {
               <PrivateRoute path="/tipos-de-estructura/:id" component={TipoDeEstructura} exact/>
               <PrivateRoute path="/tipos-de-estructura/:id/editar/single" component={TipoDeEstructura} exact/>
               <PrivateRoute path="/tipos-de-estructura/:id/eliminar/single" component={TipoDeEstructura} exact/>
+              <Route component={NotFound} />
             </Switch>
             <PrivateRoute path="/:elemento/agregar" component={PopUpAdd} exact/>
             <PrivateRoute path="/:elemento/:id/eliminar/:single" component={PopUpRemove} exact/>
