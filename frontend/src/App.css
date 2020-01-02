@@ -64,8 +64,10 @@ footer h6 {
 .appContent {
   min-height: calc(100vh - 130px);
   position: relative;
-  padding: 2em 0;
+  padding: 2em;
   box-sizing: border-box;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .card {
@@ -173,6 +175,7 @@ footer h6 {
 .tableContainer{
   padding: 2em;
   background: #fff;
+  overflow-x: scroll;
 }
 
 .columna.verticalAlign,
@@ -192,7 +195,7 @@ table tr{
 }
 
 table tbody tr:hover{
-  transform: scale(1.05,1.05);
+  transform: scale(1,1.05);
   box-shadow: 0 0 10px 1px rgba(0,0,0,.2);
   padding: 0 2em;
 }
@@ -213,6 +216,15 @@ table .textCenter {
 
 table .textLeft{
   text-align: left;
+}
+
+table td span.fue {
+  background-color: rgb(106, 214, 5);
+  padding: 5px 1em;
+}
+table td span.noFue {
+  background-color: rgb(245, 56, 56);
+  padding: 5px 1em;
 }
 
 .topMenu{

@@ -70,7 +70,7 @@ const Tabla = ({columnas, data, refColumnas, refPropsColumnas, linkBase, alineac
                                             (col, j) => (
                                                 <td className={alineacionesColumnas[j] === 'c' ? 'textCenter' : 'textLeft'} key={col['key']}>  
                                                     <Link to={`${linkBase}/${fila[0]['valor']}`}>
-                                                        { columnas[j] !== 'Fecha' ? col['valor'] : col['valor'].toLocaleDateString('es-AR', DATEOPTIONS)}
+                                                        { columnas[j] !== 'Fecha' ? col['valor'] == "Fue" ? <span className="fue">{col['valor']}</span> : col['valor'] == "No fue" ? <span className="noFue">{col['valor']}</span> : col['valor'] : col['valor'].toLocaleDateString('es-AR', DATEOPTIONS)}
                                                     </Link>
                                                 </td>
                                             )
