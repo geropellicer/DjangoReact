@@ -11,3 +11,5 @@ export const AUTH_ERROR = 'AUTH_ERROR';
 export const LOGOUT = 'LOGOUT';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
+export const SELECT_EVENTOS_TAB = 'SELECT_EVENTOS_TAB';
+export const SELECT_APORTES_TAB = 'SELECT_APORTES_TAB';

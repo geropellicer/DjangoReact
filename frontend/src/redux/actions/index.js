@@ -11,7 +11,9 @@ import {
     AUTH_ERROR,
     LOGOUT,
     LOGIN_SUCCESS,
-    LOGIN_ERROR
+    LOGIN_ERROR,
+    SELECT_EVENTOS_TAB,
+    SELECT_APORTES_TAB
 } from './types';
 
 export const returnErrors = (msg, status) => {
@@ -92,5 +94,17 @@ export const loginSuccess = (token) => {
 export const loginError = () => {
     return {
         type: LOGIN_ERROR,
+    }
+}
+
+export const selectEventosTab = () => {
+    return {
+        type: SELECT_EVENTOS_TAB,
+    }
+}
+
+export const selectAportesTab = () => {
+    return {
+        type: SELECT_APORTES_TAB,
     }
 }
