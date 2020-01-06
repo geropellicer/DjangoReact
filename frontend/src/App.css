@@ -205,6 +205,11 @@ table tbody tr td:first-child,
 table thead th:first-child{
   padding: 0 1em;
 }
+table th,
+table td{
+  min-width: 90px;
+}
+
 
 table th{
   color: #c50b0b;
@@ -424,4 +429,27 @@ table button ion-icon{
     @keyframes fade-in {
     0% { opacity: 0;}
     100% { opacity: 1;}
+    }
+
+    .tabMenu {
+      background-color: #fff;
+      margin-bottom: 1em;
+      justify-content: space-between;
+    }
+    .tabMenu button{
+      width: 50%;
+      border: none;
+      border-radius: 0;
+      transition: all .3s ease-in-out;
+    }
+    .tabMenu button:hover{
+      background-color: #808080;
+      color: #fff;
+    }
+    .tabMenu button.activo{
+      background-color: #c50b0b;
+      color: #fff;
+    }
+    .tabMenu button:first-child{
+      border-right: 1px solid #ccc;
     }
