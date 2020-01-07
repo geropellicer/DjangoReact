@@ -11,7 +11,7 @@ const Footer = () => {
 
     return(
         <footer className="mainFooter">
-            <h5>ADMIN PTS</h5>
+            <h5>ADMIN</h5>
 
             <nav>
                 <Link to='/'>

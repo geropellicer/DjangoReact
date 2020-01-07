@@ -24,13 +24,13 @@ const Nav = () => {
 
 
             <Link to="/">
-                <h5>ADMIN PTS</h5>
+                <h5>ADMIN</h5>
             </Link>
 
             <nav className="fila">
                 {
                     user ?
-                    <span>Bienvenidx {user.username}</span>
+                    <span>Bienvenido {user.username}</span>
                     : null
                 }
                 {

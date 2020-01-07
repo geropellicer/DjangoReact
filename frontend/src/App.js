@@ -55,7 +55,7 @@ function App() {
         <Router>
           <Nav/>
           <div className="appContent">
-            <Mapa/>
+            {/* <Mapa/> */}
             <Switch>
               <Route path="/login" component={Login} exact/>
               <PrivateRoute path="/" component={Home} exact/>
