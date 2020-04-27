@@ -1,4 +1,15 @@
 /venv
+/adminvenv
 /frontend/node_modules
 /backend/admin/db.sqlite3
 __pycache__/
+.vscode/settings.json
+.vscode/settings.json
+settings.json
+*/settings.json
+**/settings.json
+nginx/frontend
+.vscode
+nginx/ssl/private
+nginx/ssl/public
+backend/logs
