@@ -36,7 +36,7 @@ Use your favourite venv tool like pipenv or simply the built in venv:
 ```
    python3 -m venv venv
    source ./venv/bin/activate
-   pip install -r requirements.txt
+   pip install -r ./backend/requirements.txt
    ```
    
 ### Install React dependencies with NPM
@@ -66,3 +66,20 @@ You can know check that the frontend app is working in the 3000 port at localhos
 - localhost:8000 (localhost:8000/api for the DRF browsable API and localhost:8000/admin for Django admin)
 
 This is an app I have that mainly served as a dashboard for showing tables of data. So if you go ahead in the admin and add new items for any of the models registered, you sould see them in the frontend. 
+
+
+# Production
+
+1) npm run build
+
+2) copy build folder to nginx folder
+
+3) rename from build to frontend
+
+4) inside production folder
+
+5) docker-compose -f docker-compose-prod.yml up -d --build
+
+6) Enter to the production_web container with bash (docker container exec -it <id of the container> bash) and create a superuser.
+
+7) Visit localhost and you should be able to login with the user you just created

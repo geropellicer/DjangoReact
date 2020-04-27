@@ -1,4 +1,5 @@
 {
     "python.pythonPath": "venv\\Scripts\\python.exe",
-    "sqltools.useNodeRuntime": true
+    "sqltools.useNodeRuntime": true,
+    "python.formatting.provider": "black"
 }

@@ -13,3 +13,4 @@ nginx/frontend
 nginx/ssl/private
 nginx/ssl/public
 backend/logs
+/backend/admin/static
