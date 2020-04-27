@@ -17,6 +17,13 @@ and many of them utilize different hooks to provide functionalities in different
 It also utilizes React-Router-Dom with custom PrivateRoutes, which works together with Django permissions to provide a secure and private app.
 
 
+# Requirements
+You will need:
+- Node installed (I recommend v10, v12 or anything newer and stable)
+- NPM (whichever version comes with above Node versions listed)
+- Python3 (I don't really know the minimum version that would work with this, but I reccommend 3.7)
+- In case you want to try the dockerized version, Docker (latest Community Edition) and docker-compose.
+
 # Local testing implementation
 
 ### Clone repo
@@ -27,7 +34,7 @@ git clone https://github.com/geropellicer/DjangoReact.git
 ### Create virtual enviroment and install Python dependencies
 Use your favourite venv tool like pipenv or simply the built in venv:
 ```
-   python -m venv venvname
+   python3 -m venv venvname
    source ./venv/bin/activate
    pip install -r requirements.txt
    ```
