@@ -1,0 +1,10 @@
+ssl/
+ssl
+localhost.key
+localhost.crt
+**/*.crt
+**/*.key
+.key
+.crt
+*.key
+*.crt

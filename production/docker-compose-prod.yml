@@ -1,0 +1,62 @@
+version: '3.2'
+
+services:
+  web:
+    build: 
+      context: ../backend
+      dockerfile: Dockerfile
+    image: geropellicer/gunicorn 
+    volumes: 
+      - ../backend/admin:/site
+    depends_on:
+      - postgres
+    expose: 
+        - "8000"
+    command: bash -c "pwd && ls && python manage.py collectstatic --no-input && python manage.py makemigrations && python manage.py migrate && gunicorn --workers=3 admin.wsgi -b 0.0.0.0:8000"
+    ports: 
+      - "8000:8000"
+    networks:
+      - admin
+
+  nginx:
+    restart: always
+    build: ../nginx/
+    volumes: 
+      - ../backend/logs/:/site/logs
+      - ../backend/admin/frontend:/site/static
+      - ../backend/admin/media:/site/media
+      - ../nginx/ssl/public:/etc/ssl/certs/
+      - ../nginx/ssl/private:/etc/ssl/private/
+    ports: 
+      - "80:80"
+      - "443:443"
+    links:
+      - web
+    networks:
+      - admin
+    depends_on:
+      - web
+
+      
+  postgres:
+    build: ../postgres
+    restart: unless-stopped
+    expose:
+      - "5432"
+    environment:   # will be used by the init script
+          LC_ALL: C.UTF-8
+          POSTGRES_USER: myuser
+          POSTGRES_PASSWORD: mypassowrd.
+          POSTGRES_DB: mydb
+    volumes:
+        - pgdata:/var/lib/postgresql/data/
+    networks:
+      - admin
+
+volumes: 
+  pgdata:
+  media:
+  static:
+
+networks: 
+  admin:
