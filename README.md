@@ -19,9 +19,9 @@ It also utilizes React-Router-Dom with custom PrivateRoutes, which works togethe
 
 # Requirements
 You will need:
-- Node installed (I recommend v10, v12 or anything newer and stable)
-- NPM (whichever version comes with above Node versions listed)
-- Python3 (I don't really know the minimum version that would work with this, but I reccommend 3.7)
+- Node installed (I recommend v10, v12 or anything newer and stable). I strongly recommend NVM.
+- NPM (whichever version comes with above Node versions listed). I strongly recommend NVM.
+- Python3 (I don't really know the minimum version that would work with this, but I recommend 3.7)
 - In case you want to try the dockerized version, Docker (latest Community Edition) and docker-compose.
 
 # Local testing implementation
@@ -31,10 +31,10 @@ You will need:
 git clone https://github.com/geropellicer/DjangoReact.git
 ```
 
-### Create virtual enviroment and install Python dependencies
+### Create virtual enviroment, activate and install Python dependencies
 Use your favourite venv tool like pipenv or simply the built in venv:
 ```
-   python3 -m venv venvname
+   python3 -m venv venv
    source ./venv/bin/activate
    pip install -r requirements.txt
    ```
@@ -54,7 +54,15 @@ In frontend folder:
 
 In backend/admin folder (with venv activated):
 ```
-   python manage.py migrate
-   python manage.py createsuperuser
-   python manage.py runserver
+   python3 manage.py migrate
+   python3 manage.py createsuperuser
+   python3 manage.py runserver
 ```
+
+### Ready to go!
+
+You can know check that the frontend app is working in the 3000 port at localhost and the backend in port 8000:
+- localhost:3000
+- localhost:8000 (localhost:8000/api for the DRF browsable API and localhost:8000/admin for Django admin)
+
+This is an app I have that mainly served as a dashboard for showing tables of data. So if you go ahead in the admin and add new items for any of the models registered, you sould see them in the frontend. 
