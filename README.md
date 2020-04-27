@@ -83,3 +83,5 @@ This is an app I have that mainly served as a dashboard for showing tables of da
 6) Enter to the production_web container with bash (docker container exec -it <id of the container> bash) and create a superuser.
 
 7) Visit localhost and you should be able to login with the user you just created
+
+(If fails check running container with "docker container ls". If web is missing, try with docker-compose -f docker-compose-prod.yml down and then repeat step 5. If keeps failing, remove -d parameter and debug.)
