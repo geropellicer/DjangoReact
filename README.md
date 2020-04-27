@@ -20,7 +20,8 @@ It also utilizes React-Router-Dom with custom PrivateRoutes, which works togethe
 # Local testing implementation
 
 ### Clone repo
-```git clone https://github.com/geropellicer/DjangoReactAdmin.git
+```
+git clone https://github.com/geropellicer/DjangoReact.git
 ```
 
 ### Create virtual enviroment and install Python dependencies
