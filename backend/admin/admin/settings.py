@@ -88,23 +88,23 @@ WSGI_APPLICATION = "admin.wsgi.application"
 # !PROD (comment first one for prod, comment second one for development)
 # !PROD CHANGE USER AND PASSWORD BOTH IN DATBASES BELOW AND ON DOCKER
 
-# DATABASES = {
-#   'default': {
-#       'ENGINE': 'django.db.backends.sqlite3',
-#       'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#   }
-# }
-
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "mydb",
-        "USER": "myuser",
-        "PASSWORD": "mypassowrd.",
-        "HOST": "postgres",
-        "PORT": 5432,
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
 }
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql_psycopg2",
+#         "NAME": "mydb",
+#         "USER": "myuser",
+#         "PASSWORD": "mypassowrd.",
+#         "HOST": "postgres",
+#         "PORT": 5432,
+#     }
+# }
 
 
 # Password validation
@@ -137,13 +137,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = "/static/"
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "frontend"),
 ]
 
-STATIC_ROOT = os.path.join('/site', 'static')
+STATIC_ROOT = os.path.join("/site", "static")
 
 
 CORS_ORIGIN_ALLOW_ALL = True

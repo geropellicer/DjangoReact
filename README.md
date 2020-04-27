@@ -70,18 +70,20 @@ This is an app I have that mainly served as a dashboard for showing tables of da
 
 # Production
 
-1) npm run build
+1) Go to the settings file of the backend (backend/admin/admin/settings.py) and comment lines 91 to 96. Then uncomment lines 98 to 107.
 
-2) copy build folder to nginx folder
+2) npm run build
 
-3) rename from build to frontend
+3) copy build folder to nginx folder
 
-4) inside production folder
+4) rename from build to frontend
 
-5) docker-compose -f docker-compose-prod.yml up -d --build
+5) inside production folder
 
-6) Enter to the production_web container with bash (docker container exec -it <id of the container> bash) and create a superuser.
+6) docker-compose -f docker-compose-prod.yml up -d --build
 
-7) Visit localhost and you should be able to login with the user you just created
+7) Enter to the production_web container with bash (docker container exec -it <id of the container> bash) and create a superuser.
+
+8) Visit localhost and you should be able to login with the user you just created
 
 (If fails check running container with "docker container ls". If web is missing, try with docker-compose -f docker-compose-prod.yml down and then repeat step 5. If keeps failing, remove -d parameter and debug.)
