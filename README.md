@@ -1,8 +1,8 @@
 # DjangoReactAdmin
-Admin panel with Backend in Django using DRF and forntend with React (using hooks and Redux)
+Admin panel with Backend in Django using DRF and frontend with React (using hooks and Redux)
 
 
-This project is a small arhchetype implementing the following technologies and features:
+This project is a small archetype implementing the following technologies and features:
 
 > It consists on two main applications, one set for the backend with Django a DRF. 
 > The other one being the front-end client built with React and Redux
