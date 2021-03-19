@@ -6,7 +6,7 @@ click==7.1.1
 Django==3.0.3
 django-cors-headers==3.2.0
 django-rest-auth==0.9.5
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 gunicorn==20.0.4
 pathspec==0.8.0
 pytz==2019.3
